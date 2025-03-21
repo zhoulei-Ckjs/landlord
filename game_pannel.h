@@ -1,3 +1,7 @@
+/**
+ * @file 主窗口类
+ */
+
 #ifndef GAME_PANNEL_H
 #define GAME_PANNEL_H
 
