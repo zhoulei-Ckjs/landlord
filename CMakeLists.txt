@@ -25,6 +25,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         ${PROJECT_SOURCES}
         card.h card.cpp
         card_panel.h card_panel.cpp
+        player.h player.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET landlord APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
