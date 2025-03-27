@@ -1,5 +1,5 @@
 #include "score_panel.h"
-#include "ui_scorepanel.h"
+#include "ui_score_panel.h"
 
 ScorePanel::ScorePanel(QWidget *parent)
     : QWidget(parent)
