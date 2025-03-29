@@ -14,9 +14,9 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 set(PROJECT_SOURCES
         main.cpp
-        game_pannel.cpp
-        game_pannel.h
-        game_pannel.ui
+        game_panel.cpp
+        game_panel.h
+        game_panel.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
