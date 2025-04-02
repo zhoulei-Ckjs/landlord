@@ -62,3 +62,16 @@
     |                                           ——                                                |
     |                                                                                             |
     |---------------------------------------------------------------------------------------------|
+# 自定义按钮类
+## 创建按钮类
+【添加新文件】 -> 【C/C++】 -> 【C++ Class】 -> 【选择】 ->
+* Details:
+  * Class Name: MyButton
+  * Base Class: QWidget
+  * Header file: my_button.h
+  * Source file: my_button.cpp
+* 汇总: ...
+
+【完成】
+## 修改按钮类
+将基类修改为QPushButton
