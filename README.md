@@ -75,3 +75,11 @@
 【完成】
 ## 修改按钮类
 将基类修改为QPushButton
+# 按钮组窗口
+## 创建按钮组窗口
+项目右键 -> 【添加新文件】 -> 【Qt】 -> 【Qt Widgets Designer Form Class】-> 点击【选择】进入下一步
+* 界面模板: Widget
+* 类详情：
+  * 类名: ButtonGroup
+  * 其他: 默认...
+* 汇总：...
