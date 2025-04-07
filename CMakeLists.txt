@@ -29,6 +29,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         score_panel.h score_panel.cpp score_panel.ui
         my_button.h my_button.cpp
         button_group.h button_group.cpp button_group.ui
+        res.qrc
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET landlord APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

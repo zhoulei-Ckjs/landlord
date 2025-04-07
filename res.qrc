@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/img/button_group/start.png</file>
+    </qresource>
+</RCC>
