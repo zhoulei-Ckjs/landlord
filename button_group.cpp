@@ -12,3 +12,9 @@ ButtonGroup::~ButtonGroup()
 {
     delete ui;
 }
+
+void ButtonGroup::InitButtons()
+{
+    /// 设置开始游戏图片
+    ui->start_->SetImage(":/res/img/button_group/start.png");
+}

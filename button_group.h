@@ -1,3 +1,7 @@
+/**
+ * @brief 按钮组窗口
+ */
+
 #ifndef BUTTON_GROUP_H
 #define BUTTON_GROUP_H
 
@@ -14,6 +18,11 @@ class ButtonGroup : public QWidget
 public:
     explicit ButtonGroup(QWidget *parent = nullptr);
     ~ButtonGroup();
+
+    /**
+     * @brief 初始化按钮
+     */
+    void InitButtons();
 
 private:
     Ui::ButtonGroup *ui;
