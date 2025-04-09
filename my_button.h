@@ -17,11 +17,21 @@ public:
      * @brief 设置图片
      * @param normal 正常情况下的图片
      */
-    void SetImage(QString normal);
+    void SetImage(QString normal, QString hover, QString pressed);
 
     signals:
 
 protected:
+    /**
+     * @brief 鼠标按下事件
+     */
+    void mousePressEvent(QMouseEvent *event);
+
+    /**
+     * @brief 鼠标释放事件
+     */
+    void mouseReleaseEvent(QMouseEvent *event);
+
     /**
      * @brief 重写绘画事件
      */
@@ -29,6 +39,7 @@ protected:
 
 private:
     QPixmap current_picture_;           ///< 当前图片
+    QString normal_, hover_, pressed_;  ///< 鼠标在正常、悬浮及按下时的图片
 };
 
 #endif // MY_BUTTON_H

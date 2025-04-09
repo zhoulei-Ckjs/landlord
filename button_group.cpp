@@ -16,5 +16,5 @@ ButtonGroup::~ButtonGroup()
 void ButtonGroup::InitButtons()
 {
     /// 设置开始游戏图片
-    ui->start_->SetImage(":/res/img/button_group/start.png");
+    ui->start_->SetImage(":/res/img/button_group/start.png", ":/res/img/button_group/hover.png", ":/res/img/button_group/pressed.png");
 }

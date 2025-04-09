@@ -23,12 +23,12 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(landlord
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
-        card.h card.cpp
-        card_panel.h card_panel.cpp
-        player.h player.cpp
-        score_panel.h score_panel.cpp score_panel.ui
-        my_button.h my_button.cpp
-        button_group.h button_group.cpp button_group.ui
+        card.cpp
+        card_panel.cpp
+        player.cpp
+        score_panel.cpp score_panel.ui
+        my_button.cpp
+        button_group.cpp button_group.ui
         res.qrc
     )
 # Define target properties for Android with Qt 6 as:
@@ -66,6 +66,8 @@ set_target_properties(landlord PROPERTIES
 )
 
 include(GNUInstallDirs)
+
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_LIST_DIR}/)
 install(TARGETS landlord
     BUNDLE DESTINATION .
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}

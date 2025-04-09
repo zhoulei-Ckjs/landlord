@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>res/img/button_group/start.png</file>
+        <file>res/img/button_group/hover.png</file>
+        <file>res/img/button_group/pressed.png</file>
     </qresource>
 </RCC>
