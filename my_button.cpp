@@ -33,6 +33,22 @@ void MyButton::mouseReleaseEvent(QMouseEvent *event)
     update();
 }
 
+void MyButton::enterEvent(QEnterEvent *event)
+{
+    current_picture_.load(hover_);
+
+    /// 重绘按钮
+    update();
+}
+
+void MyButton::leaveEvent(QEvent *event)
+{
+    current_picture_.load(normal_);
+
+    /// 重绘按钮
+    update();
+}
+
 void MyButton::paintEvent(QPaintEvent *e)
 {
     QPainter p(this);

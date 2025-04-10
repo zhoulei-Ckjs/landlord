@@ -33,6 +33,16 @@ protected:
     void mouseReleaseEvent(QMouseEvent *event);
 
     /**
+     * @brief 鼠标进入事件
+     */
+    void enterEvent(QEnterEvent *event);
+
+    /**
+     * @brief 鼠标离开事件
+     */
+    void leaveEvent(QEvent *event);
+
+    /**
      * @brief 重写绘画事件
      */
     void paintEvent(QPaintEvent* e);
