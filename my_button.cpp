@@ -1,5 +1,6 @@
 #include "my_button.h"
 
+#include <QMouseEvent>
 #include <QPainter>
 
 MyButton::MyButton(QWidget *parent)
@@ -19,18 +20,24 @@ void MyButton::SetImage(QString normal, QString hover, QString pressed)
 
 void MyButton::mousePressEvent(QMouseEvent *event)
 {
-    current_picture_.load(pressed_);
+    if(event->button() == Qt::LeftButton)
+    {
+        current_picture_.load(pressed_);
 
-    /// 重绘按钮
-    update();
+        /// 重绘按钮
+        update();
+    }
 }
 
 void MyButton::mouseReleaseEvent(QMouseEvent *event)
 {
-    current_picture_.load(normal_);
+    if(event->button() == Qt::LeftButton)
+    {
+        current_picture_.load(normal_);
 
-    /// 重绘按钮
-    update();
+        /// 重绘按钮
+        update();
+    }
 }
 
 void MyButton::enterEvent(QEnterEvent *event)
