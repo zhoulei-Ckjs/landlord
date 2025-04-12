@@ -1,7 +1,10 @@
 <RCC>
     <qresource prefix="/">
-        <file>res/img/button_group/start.png</file>
-        <file>res/img/button_group/hover.png</file>
-        <file>res/img/button_group/pressed.png</file>
+        <file>res/img/button_group/play_card/hover.png</file>
+        <file>res/img/button_group/play_card/normal.png</file>
+        <file>res/img/button_group/play_card/pressed.png</file>
+        <file>res/img/button_group/start/hover.png</file>
+        <file>res/img/button_group/start/pressed.png</file>
+        <file>res/img/button_group/start/start.png</file>
     </qresource>
 </RCC>

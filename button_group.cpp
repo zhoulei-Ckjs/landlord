@@ -16,5 +16,7 @@ ButtonGroup::~ButtonGroup()
 void ButtonGroup::InitButtons()
 {
     /// 设置开始游戏图片
-    ui->start_->SetImage(":/res/img/button_group/start.png", ":/res/img/button_group/hover.png", ":/res/img/button_group/pressed.png");
+    ui->start_->SetImage(":/res/img/button_group/start/start.png", ":/res/img/button_group/start/hover.png", ":/res/img/button_group/start/pressed.png");
+    /// 设置出牌按钮图片
+    ui->play_card_->SetImage(":/res/img/button_group/play_card/start.png", ":/res/img/button_group/play_card/hover.png", ":/res/img/button_group/play_card/pressed.png");
 }

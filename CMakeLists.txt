@@ -23,12 +23,12 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(landlord
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
-        card.cpp
-        card_panel.cpp
-        player.cpp
-        score_panel.cpp score_panel.ui
-        my_button.cpp
-        button_group.cpp button_group.ui
+        card.h card.cpp
+        card_panel.h card_panel.cpp
+        player.h player.cpp
+        score_panel.h score_panel.cpp score_panel.ui
+        my_button.h my_button.cpp
+        button_group.h button_group.cpp button_group.ui
         res.qrc
     )
 # Define target properties for Android with Qt 6 as:
