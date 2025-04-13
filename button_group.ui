@@ -15,7 +15,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QStackedWidget" name="stackedWidget">
+    <widget class="QStackedWidget" name="stacked_widget_">
      <widget class="QWidget" name="start_page_">
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>

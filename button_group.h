@@ -24,6 +24,11 @@ public:
      */
     void InitButtons();
 
+    /**
+     * @brief 处理配置页的切换
+     */
+    void SelectPanel();
+
 private:
     Ui::ButtonGroup *ui;
 };
