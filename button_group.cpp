@@ -19,6 +19,12 @@ void ButtonGroup::InitButtons()
     ui->start_->SetImage(":/res/img/button_group/start/start.png", ":/res/img/button_group/start/hover.png", ":/res/img/button_group/start/pressed.png");
     /// 设置出牌按钮图片
     ui->play_card_->SetImage(":/res/img/button_group/play_card/normal.png", ":/res/img/button_group/play_card/hover.png", ":/res/img/button_group/play_card/pressed.png");
+
+    /// 设置按钮大小
+    QVector<MyButton*> btns;
+    btns << ui->start_ << ui->play_card_;
+    for(auto& it : btns)
+        it->setFixedSize(90, 45);
 }
 
 void ButtonGroup::SelectPanel()
