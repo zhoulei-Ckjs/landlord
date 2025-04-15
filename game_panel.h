@@ -21,7 +21,15 @@ public:
     GamePanel(QWidget *parent = nullptr);
     ~GamePanel();
 
+protected:
+    /**
+     * @brief 游戏主窗口绘图事件
+     */
+    void paintEvent(QPaintEvent* e);
+
 private:
     Ui::GamePanel *ui;
+
+    QPixmap background_image_;      ///< 游戏主窗口背景图片
 };
 #endif // GAME_PANEL_H

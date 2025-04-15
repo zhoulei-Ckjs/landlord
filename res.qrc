@@ -6,5 +6,15 @@
         <file>res/img/button_group/start/hover.png</file>
         <file>res/img/button_group/start/pressed.png</file>
         <file>res/img/button_group/start/start.png</file>
+        <file>res/img/background/background-1.png</file>
+        <file>res/img/background/background-2.png</file>
+        <file>res/img/background/background-3.png</file>
+        <file>res/img/background/background-4.png</file>
+        <file>res/img/background/background-5.png</file>
+        <file>res/img/background/background-6.png</file>
+        <file>res/img/background/background-7.png</file>
+        <file>res/img/background/background-8.png</file>
+        <file>res/img/background/background-9.png</file>
+        <file>res/img/background/background-10.png</file>
     </qresource>
 </RCC>
