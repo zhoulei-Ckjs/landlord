@@ -30,6 +30,6 @@ protected:
 private:
     Ui::GamePanel *ui;
 
-    QPixmap background_image_;      ///< 游戏主窗口背景图片
+    QPixmap background_image_;          ///< 游戏主窗口背景图片
 };
 #endif // GAME_PANEL_H

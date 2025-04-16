@@ -5,10 +5,10 @@
 #ifndef CARD_H
 #define CARD_H
 
-class card
+class Card
 {
 public:
-    card();
+    Card();
 };
 
 #endif // CARD_H

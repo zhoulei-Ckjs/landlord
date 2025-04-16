@@ -7,11 +7,11 @@
 
 #include <QWidget>
 
-class card_panel : public QWidget
+class CardPanel : public QWidget
 {
     Q_OBJECT
 public:
-    explicit card_panel(QWidget *parent = nullptr);
+    explicit CardPanel(QWidget *parent = nullptr);
 
 signals:
 };

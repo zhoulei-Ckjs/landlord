@@ -1,3 +1,3 @@
 #include "card.h"
 
-card::card() {}
+Card::Card() {}
