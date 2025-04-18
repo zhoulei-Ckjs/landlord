@@ -16,5 +16,6 @@
         <file>res/img/background/background-8.png</file>
         <file>res/img/background/background-9.png</file>
         <file>res/img/background/background-10.png</file>
+        <file>res/img/card/card.png</file>
     </qresource>
 </RCC>
