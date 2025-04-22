@@ -42,9 +42,23 @@ void GamePanel::InitGameScene()
     base_card_ = new CardPanel(this);
     base_card_->SetImage(card_back_image_, card_back_image_);
 
+    /// 最后的三张底牌
+    for(int i = 0; i < 3; i++)
+    {
+        CardPanel* panel = new CardPanel(this);
+        panel->SetImage(card_back_image_, card_back_image_);
+        last_3_cards_.push_back(panel);
+    }
+
     /// 发牌时刻中心卡牌的位置
     base_card_pos_ = QPoint((width() - card_size_.width()) / 2, height() / 2 - 100);
     base_card_->move(base_card_pos_);
+    /// 最后三张底牌
+    int base = (width() - 3 * card_size_.width() - 2 * 10) / 2;
+    for(int i = 0; i < 3; i++)
+    {
+        last_3_cards_[i]->move(base + (card_size_.width() + 10) * i, 20);
+    }
 }
 
 void GamePanel::InitCardMap()
