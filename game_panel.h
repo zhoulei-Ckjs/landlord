@@ -29,6 +29,11 @@ public:
     void InitGameScene();
 
     /**
+     * @brief 更新玩家得分
+     */
+    void UpdatePlayerScore();
+
+    /**
      * @brief 切割并存储图片
      */
     void InitCardMap();

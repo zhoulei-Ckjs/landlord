@@ -21,6 +21,14 @@ public:
     explicit ScorePanel(QWidget *parent = nullptr);
     ~ScorePanel();
 
+    /**
+     * @brief 设置玩家得分
+     * @param left 左侧玩家得分
+     * @param right 右侧玩家得分
+     * @param user 玩家得分
+     */
+    void SetScores(int left, int right, int user);
+
 private:
     Ui::ScorePanel *ui;
 };
