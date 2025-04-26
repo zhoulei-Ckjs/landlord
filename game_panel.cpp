@@ -14,7 +14,7 @@ GamePanel::GamePanel(QWidget *parent)
     ui->button_group_->InitButtons();
 
     /// 切换栈窗口面板
-    ui->button_group_->SelectPanel();
+    ui->button_group_->SelectPanel(ButtonGroup::Panel::START);
 
     /// 背景图
     int background_image_index = QRandomGenerator::global()->bounded(10);   ///< 生成[0,10)的随机数。
@@ -52,6 +52,7 @@ void GamePanel::InitGameScene()
         CardPanel* panel = new CardPanel(this);
         panel->SetImage(card_back_image_, card_back_image_);
         last_3_cards_.push_back(panel);
+        panel->hide();
     }
 
     /// 发牌时刻中心卡牌的位置

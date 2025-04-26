@@ -16,6 +16,12 @@ class ButtonGroup : public QWidget
     Q_OBJECT
 
 public:
+    enum Panel
+    {
+        START,
+        PLAY_CARD
+    };
+
     explicit ButtonGroup(QWidget *parent = nullptr);
     ~ButtonGroup();
 
@@ -27,7 +33,7 @@ public:
     /**
      * @brief 处理配置页的切换
      */
-    void SelectPanel();
+    void SelectPanel(Panel type);
 
 private:
     Ui::ButtonGroup *ui;

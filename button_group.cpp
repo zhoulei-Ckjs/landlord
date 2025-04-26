@@ -27,7 +27,7 @@ void ButtonGroup::InitButtons()
         it->setFixedSize(90, 45);
 }
 
-void ButtonGroup::SelectPanel()
+void ButtonGroup::SelectPanel(Panel type)
 {
-    ui->stacked_widget_->setCurrentIndex(1);
+    ui->stacked_widget_->setCurrentIndex(type);
 }
