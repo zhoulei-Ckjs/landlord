@@ -46,6 +46,10 @@ void GamePanel::InitGameScene()
     base_card_ = new CardPanel(this);
     base_card_->SetImage(card_back_image_, card_back_image_);
 
+    /// 发牌时移动的扑克牌
+    move_card_ = new CardPanel(this);
+    move_card_->SetImage(card_back_image_, card_back_image_);
+
     /// 最后的三张底牌
     for(int i = 0; i < 3; i++)
     {
@@ -58,6 +62,8 @@ void GamePanel::InitGameScene()
     /// 发牌时刻中心卡牌的位置
     base_card_pos_ = QPoint((width() - card_size_.width()) / 2, height() / 2 - 100);
     base_card_->move(base_card_pos_);
+    move_card_->move(base_card_pos_);   ///< 初始化位置
+
     /// 最后三张底牌
     int base = (width() - 3 * card_size_.width() - 2 * 10) / 2;
     for(int i = 0; i < 3; i++)

@@ -51,6 +51,7 @@ private:
     QPixmap card_back_image_;           ///< 扑克牌的背面
     QSize card_size_;                   ///< 每张卡牌的大小
     CardPanel* base_card_;              ///< 发牌区中间的扑克牌
+    CardPanel* move_card_;              ///< 发牌时移动的牌
     QPoint base_card_pos_;              ///< 发牌区中间的扑克牌位置
     QVector<CardPanel*> last_3_cards_;  ///< 最后三张扑克牌
 };
