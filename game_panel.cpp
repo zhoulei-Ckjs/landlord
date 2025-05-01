@@ -3,6 +3,7 @@
 
 #include <QPainter>
 #include <QRandomGenerator>
+#include <QTimer>
 
 GamePanel::GamePanel(QWidget *parent)
     : QMainWindow(parent)
@@ -33,6 +34,11 @@ GamePanel::GamePanel(QWidget *parent)
 
     /// 扑克牌场景初始化
     InitGameScene();
+
+    /// 定时器实例化
+    timer_ = new QTimer(this);
+    connect(timer_, &QTimer::timeout, this, &GamePanel::OnDispatchCard);
+    timer_->start(10);
 }
 
 GamePanel::~GamePanel()
@@ -88,6 +94,21 @@ void GamePanel::InitCardMap()
 
     /// 扑克牌背面图
     card_back_image_ = pixmap.copy(2 * card_size_.width(), 4 * card_size_.height(), card_size_.width(), card_size_.height());
+}
+
+void GamePanel::OnDispatchCard()
+{
+    CardMoveStep();
+}
+
+void GamePanel::CardMoveStep()
+{
+    static int cur_pos = 0;
+    QPoint pos(base_card_pos_.x() - cur_pos, base_card_->y());
+    move_card_->move(pos);
+    if(base_card_pos_.x() - cur_pos <= 0)
+        timer_->stop();
+    cur_pos++;
 }
 
 void GamePanel::paintEvent(QPaintEvent *e)

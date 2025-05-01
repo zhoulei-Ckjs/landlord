@@ -38,6 +38,16 @@ public:
      */
     void InitCardMap();
 
+    /**
+     * @brief 发牌时的定时器处理动作
+     */
+    void OnDispatchCard();
+
+    /**
+     * @brief CardMoveStep 移动扑克牌
+     */
+    void CardMoveStep();
+
 protected:
     /**
      * @brief 游戏主窗口绘图事件
@@ -54,5 +64,6 @@ private:
     CardPanel* move_card_;              ///< 发牌时移动的牌
     QPoint base_card_pos_;              ///< 发牌区中间的扑克牌位置
     QVector<CardPanel*> last_3_cards_;  ///< 最后三张扑克牌
+    QTimer* timer_;                     ///< 定时器，用于控制发牌时移动的牌
 };
 #endif // GAME_PANEL_H
