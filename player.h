@@ -7,11 +7,11 @@
 
 #include <QObject>
 
-class player : public QObject
+class Player : public QObject
 {
     Q_OBJECT
 public:
-    explicit player(QObject *parent = nullptr);
+    explicit Player(QObject *parent = nullptr);
 
 signals:
 };
