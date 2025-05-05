@@ -30,6 +30,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         my_button.h my_button.cpp
         button_group.h button_group.cpp button_group.ui
         res.qrc
+        game_control.h game_control.cpp
         robot.h robot.cpp
     )
 # Define target properties for Android with Qt 6 as:
