@@ -5,9 +5,11 @@
 #ifndef GAME_PANEL_H
 #define GAME_PANEL_H
 
+#include <Player.h>
 #include <QMainWindow>
 
 #include "card_panel.h"
+#include "game_control.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -24,7 +26,12 @@ public:
     ~GamePanel();
 
     /**
-     * @brief
+     * @brief GameControlInit 初始化游戏控制类信息
+     */
+    void GameControlInit();
+
+    /**
+     * @brief 初始化游戏场景
      */
     void InitGameScene();
 
@@ -65,5 +72,7 @@ private:
     QPoint base_card_pos_;              ///< 发牌区中间的扑克牌位置
     QVector<CardPanel*> last_3_cards_;  ///< 最后三张扑克牌
     QTimer* timer_;                     ///< 定时器，用于控制发牌时移动的牌
+    QVector<Player*> player_list_;      ///< 玩家列表
+    GameControl* game_ctl_;             ///< 游戏控制类
 };
 #endif // GAME_PANEL_H

@@ -26,6 +26,8 @@ GamePanel::GamePanel(QWidget *parent)
     this->setWindowTitle("欢乐斗地主");
     this->setFixedSize(1000, 650);      ///< 设置窗口的固定大小，使窗口不能拉伸
 
+
+
     /// 更新玩家得分
     UpdatePlayerScore();
 
@@ -44,6 +46,11 @@ GamePanel::GamePanel(QWidget *parent)
 GamePanel::~GamePanel()
 {
     delete ui;
+}
+
+void GamePanel::GameControlInit()
+{
+    game_ctl_ = new GameControl(this);
 }
 
 void GamePanel::InitGameScene()
@@ -107,7 +114,11 @@ void GamePanel::CardMoveStep()
     QPoint pos(base_card_pos_.x() - cur_pos, base_card_->y());
     move_card_->move(pos);
     if(base_card_pos_.x() - cur_pos <= 0)
+    {
         timer_->stop();
+        move_card_->hide();
+    }
+
     cur_pos++;
 }
 
