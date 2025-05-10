@@ -53,7 +53,7 @@ public:
     /**
      * @brief CardMoveStep 移动扑克牌
      */
-    void CardMoveStep();
+    void CardMoveStep(Player* player);
 
 protected:
     /**

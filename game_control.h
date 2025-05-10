@@ -5,6 +5,10 @@
 #ifndef GAME_CONTROL_H
 #define GAME_CONTROL_H
 
+#include "Player.h"
+#include "robot.h"
+#include "user_player.h"
+
 #include <QObject>
 
 class GameControl : public QObject
@@ -13,10 +17,24 @@ class GameControl : public QObject
 public:
     explicit GameControl(QObject *parent = nullptr);
 
+    /**
+     * @brief PlayerInit 初始化玩家
+     */
+    void PlayerInit();
+
+    /**
+     * @brief GetCurrentPlayer 获取当前玩家对象
+     * @return 玩家
+     */
+    Player* GetCurrentPlayer();
+
 signals:
 
 private:
-
+    Robot* robot_left_ = nullptr;       ///< 左侧机器人
+    Robot* robot_right_ = nullptr;      ///< 右侧机器人
+    UserPlayer* user_ = nullptr;        ///< 玩家
+    Player* curr_player_ = nullptr;     ///< 当前玩家
 };
 
 #endif // GAME_CONTROL_H
