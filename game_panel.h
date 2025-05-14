@@ -46,14 +46,21 @@ public:
     void InitCardMap();
 
     /**
+     * @brief StartDispatchCard 发牌
+     */
+    void StartDispatchCard();
+
+    /**
      * @brief 发牌时的定时器处理动作
      */
     void OnDispatchCard();
 
     /**
      * @brief CardMoveStep 移动扑克牌
+     * @param player 当前玩家
+     * @param cur_pos 卡牌位置
      */
-    void CardMoveStep(Player* player);
+    void CardMoveStep(Player* player, int cur_pos);
 
 protected:
     /**

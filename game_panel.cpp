@@ -41,7 +41,8 @@ GamePanel::GamePanel(QWidget *parent)
     /// 定时器实例化
     timer_ = new QTimer(this);
     connect(timer_, &QTimer::timeout, this, &GamePanel::OnDispatchCard);
-    timer_->start(10);
+
+    StartDispatchCard();
 }
 
 GamePanel::~GamePanel()
@@ -105,16 +106,22 @@ void GamePanel::InitCardMap()
     card_back_image_ = pixmap.copy(2 * card_size_.width(), 4 * card_size_.height(), card_size_.width(), card_size_.height());
 }
 
+void GamePanel::StartDispatchCard()
+{
+    /// 启动发牌定时器
+    timer_->start(10);
+}
+
 void GamePanel::OnDispatchCard()
 {
     static int cur_move_pos = 0;
     Player* cur_player = game_ctl_->GetCurrentPlayer();
-    CardMoveStep(cur_player);
+    CardMoveStep(cur_player, cur_move_pos);
+    cur_move_pos += 15;
 }
 
-void GamePanel::CardMoveStep(Player* player)
+void GamePanel::CardMoveStep(Player* player, int cur_pos)
 {
-    static int cur_pos = 0;
     QPoint pos(base_card_pos_.x() - cur_pos, base_card_->y());
     move_card_->move(pos);
     if(base_card_pos_.x() - cur_pos <= 0)
@@ -122,8 +129,6 @@ void GamePanel::CardMoveStep(Player* player)
         timer_->stop();
         move_card_->hide();
     }
-
-    cur_pos++;
 }
 
 void GamePanel::paintEvent(QPaintEvent *e)
