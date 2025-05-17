@@ -109,26 +109,33 @@ void GamePanel::InitCardMap()
 void GamePanel::StartDispatchCard()
 {
     /// 启动发牌定时器
-    timer_->start(10);
+    timer_->start(100);
 }
 
 void GamePanel::OnDispatchCard()
 {
     static int cur_move_pos = 0;
     Player* cur_player = game_ctl_->GetCurrentPlayer();
+    if(cur_move_pos >= 400)
+    {
+        /// 切换玩家
+        game_ctl_->SetCurrentPlayer(cur_player->GetNextPlayer());
+        cur_move_pos = 0;
+    }
     CardMoveStep(cur_player, cur_move_pos);
     cur_move_pos += 15;
 }
 
 void GamePanel::CardMoveStep(Player* player, int cur_pos)
 {
-    QPoint pos(base_card_pos_.x() - cur_pos, base_card_->y());
-    move_card_->move(pos);
-    if(base_card_pos_.x() - cur_pos <= 0)
+    /// 每次窗口移动的时候每个玩家对应的牌的时时坐标位置
+    const QPoint pos[] =
     {
-        timer_->stop();
-        move_card_->hide();
-    }
+        QPoint(base_card_pos_.x() + cur_pos, base_card_pos_.y()),
+        QPoint(base_card_pos_.x(), base_card_pos_.y() + cur_pos),
+        QPoint(base_card_pos_.x() - cur_pos, base_card_pos_.y())
+    };
+    move_card_->move(pos[0]);
 }
 
 void GamePanel::paintEvent(QPaintEvent *e)

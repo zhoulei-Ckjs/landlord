@@ -23,6 +23,12 @@ public:
     void PlayerInit();
 
     /**
+     * @brief SetCurrentPlayer 设置当前玩家
+     * @param player 当前玩家
+     */
+    void SetCurrentPlayer(Player* player);
+
+    /**
      * @brief GetCurrentPlayer 获取当前玩家对象
      * @return 玩家
      */
