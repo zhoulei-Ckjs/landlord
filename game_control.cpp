@@ -12,9 +12,9 @@ void GameControl::PlayerInit()
     user_ = new UserPlayer(this);
 
     /// 出牌顺序
-    user_->SetNextPlayer(robot_right_);
-    robot_right_->SetNextPlayer(robot_left_);
-    robot_left_->SetNextPlayer(user_);
+    user_->SetNextPlayer(robot_left_);
+    robot_right_->SetNextPlayer(user_);
+    robot_left_->SetNextPlayer(robot_right_);
 
     /// 指定当前玩家
     curr_player_ = user_;
@@ -28,4 +28,19 @@ void GameControl::SetCurrentPlayer(Player *player)
 Player *GameControl::GetCurrentPlayer()
 {
     return curr_player_;
+}
+
+Player *GameControl::GetLeftRobot()
+{
+    return robot_left_;
+}
+
+Player *GameControl::GetRightRobot()
+{
+    return robot_right_;
+}
+
+Player *GameControl::GetUserPlayer()
+{
+    return user_;
 }

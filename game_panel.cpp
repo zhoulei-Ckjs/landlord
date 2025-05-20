@@ -54,6 +54,13 @@ void GamePanel::GameControlInit()
 {
     game_ctl_ = new GameControl(this);
     game_ctl_->PlayerInit();
+
+    Player* right_robot = game_ctl_->GetRightRobot();
+    Player* user = game_ctl_->GetUserPlayer();
+    Player* left_robot = game_ctl_->GetLeftRobot();
+
+    /// 存储的顺序: 右侧机器人, 当前玩家, 左侧机器人
+    player_list_ << right_robot << user << left_robot;
 }
 
 void GamePanel::InitGameScene()
@@ -135,7 +142,10 @@ void GamePanel::CardMoveStep(Player* player, int cur_pos)
         QPoint(base_card_pos_.x(), base_card_pos_.y() + cur_pos),
         QPoint(base_card_pos_.x() - cur_pos, base_card_pos_.y())
     };
-    move_card_->move(pos[0]);
+
+    /// 移动扑克牌
+    int index = player_list_.indexOf(player);
+    move_card_->move(pos[index]);
 }
 
 void GamePanel::paintEvent(QPaintEvent *e)

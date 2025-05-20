@@ -34,6 +34,14 @@ public:
      */
     Player* GetCurrentPlayer();
 
+    /**
+     * @brief GetLeftRobot 得到玩家的实例对象
+     * @return 玩家
+     */
+    Player* GetLeftRobot();
+    Player* GetRightRobot();
+    Player* GetUserPlayer();
+
 signals:
 
 private:
