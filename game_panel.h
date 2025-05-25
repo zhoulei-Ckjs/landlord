@@ -62,6 +62,11 @@ public:
      */
     void CardMoveStep(Player* player, int cur_pos);
 
+    /**
+     * @brief InitPlayerContext 初始化玩家窗口中上下文环境
+     */
+    void InitPlayerContext();
+
 protected:
     /**
      * @brief 游戏主窗口绘图事件
@@ -69,6 +74,11 @@ protected:
     void paintEvent(QPaintEvent* e);
 
 private:
+    struct PlayerContext
+    {
+        QRect card_rect_;               ///< 玩家扑克牌显示区域
+    };
+
     Ui::GamePanel *ui;
 
     QPixmap background_image_;          ///< 游戏主窗口背景图片
@@ -81,5 +91,6 @@ private:
     QTimer* timer_;                     ///< 定时器，用于控制发牌时移动的牌
     QVector<Player*> player_list_;      ///< 玩家列表
     GameControl* game_ctl_;             ///< 游戏控制类
+    QMap<Player*, PlayerContext> context_map_;  ///< 玩家上下文
 };
 #endif // GAME_PANEL_H

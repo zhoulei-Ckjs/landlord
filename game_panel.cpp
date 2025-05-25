@@ -35,6 +35,9 @@ GamePanel::GamePanel(QWidget *parent)
     /// 切割并存储图片
     InitCardMap();
 
+    /// 初始化玩家在窗口中的上下文
+    InitPlayerContext();
+
     /// 扑克牌场景初始化
     InitGameScene();
 
@@ -123,7 +126,7 @@ void GamePanel::OnDispatchCard()
 {
     static int cur_move_pos = 0;
     Player* cur_player = game_ctl_->GetCurrentPlayer();
-    if(cur_move_pos >= 400)
+    if(cur_move_pos >= 100)
     {
         /// 切换玩家
         game_ctl_->SetCurrentPlayer(cur_player->GetNextPlayer());
@@ -135,17 +138,43 @@ void GamePanel::OnDispatchCard()
 
 void GamePanel::CardMoveStep(Player* player, int cur_pos)
 {
+    /// 得到每个玩家的扑克牌展示区域
+    QRect card_rect = context_map_[player].card_rect_;
+
+    const int unit[]=
+    {
+        (card_rect.left() - base_card_pos_.x()) / 100,
+        (card_rect.top() - base_card_pos_.y()) / 100,
+        (base_card_pos_.x() - card_rect.right()) / 100
+    };
     /// 每次窗口移动的时候每个玩家对应的牌的时时坐标位置
     const QPoint pos[] =
     {
-        QPoint(base_card_pos_.x() + cur_pos, base_card_pos_.y()),
-        QPoint(base_card_pos_.x(), base_card_pos_.y() + cur_pos),
-        QPoint(base_card_pos_.x() - cur_pos, base_card_pos_.y())
+        QPoint(base_card_pos_.x() + unit[0] * cur_pos, base_card_pos_.y()),
+        QPoint(base_card_pos_.x(), base_card_pos_.y() + unit[1] * cur_pos),
+        QPoint(base_card_pos_.x() - unit[2] * cur_pos, base_card_pos_.y())
     };
 
     /// 移动扑克牌
     int index = player_list_.indexOf(player);
     move_card_->move(pos[index]);
+}
+
+void GamePanel::InitPlayerContext()
+{
+    const QRect cards_rect[] =
+    {
+        /// x, y, width, height
+        QRect(rect().right() - 190, 130, 100, height() - 200),  ///< 右侧机器人
+        QRect(250, rect().bottom() - 120, width() - 500, 100),  ///< 玩家
+        QRect(90, 130, 100, height() - 200)                     ///< 左侧机器人
+    };
+    for(int i = 0; i < player_list_.size(); i++)
+    {
+        PlayerContext context;
+        context.card_rect_ = cards_rect[i];
+        context_map_.insert(player_list_.at(i), context);
+    }
 }
 
 void GamePanel::paintEvent(QPaintEvent *e)
