@@ -143,8 +143,8 @@ void GamePanel::CardMoveStep(Player* player, int cur_pos)
 
     const int unit[]=
     {
-        (card_rect.left() - base_card_pos_.x()) / 100,
-        (card_rect.top() - base_card_pos_.y()) / 100,
+        (card_rect.left() - base_card_pos_.x() - card_size_.width()) / 100,
+        (card_rect.top() - base_card_pos_.y() - card_size_.height()) / 100,
         (base_card_pos_.x() - card_rect.right()) / 100
     };
     /// 每次窗口移动的时候每个玩家对应的牌的时时坐标位置
