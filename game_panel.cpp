@@ -11,12 +11,6 @@ GamePanel::GamePanel(QWidget *parent)
 {
     ui->setupUi(this);
 
-    /// 初始化按钮组
-    ui->button_group_->InitButtons();
-
-    /// 切换栈窗口面板
-    ui->button_group_->SelectPanel(ButtonGroup::Panel::START);
-
     /// 背景图
     int background_image_index = QRandomGenerator::global()->bounded(10);   ///< 生成[0,10)的随机数。
     QString background_image_path = QString(":/res/img/background/background-%1.png").arg(background_image_index + 1);
@@ -35,6 +29,9 @@ GamePanel::GamePanel(QWidget *parent)
     /// 切割并存储图片
     InitCardMap();
 
+    /// 初始化游戏中按钮组
+    InitButtonsGroup();
+
     /// 初始化玩家在窗口中的上下文
     InitPlayerContext();
 
@@ -44,8 +41,6 @@ GamePanel::GamePanel(QWidget *parent)
     /// 定时器实例化
     timer_ = new QTimer(this);
     connect(timer_, &QTimer::timeout, this, &GamePanel::OnDispatchCard);
-
-    StartDispatchCard();
 }
 
 GamePanel::~GamePanel()
@@ -175,6 +170,15 @@ void GamePanel::InitPlayerContext()
         context.card_rect_ = cards_rect[i];
         context_map_.insert(player_list_.at(i), context);
     }
+}
+
+void GamePanel::InitButtonsGroup()
+{
+    ui->button_group_->InitButtons();
+    ui->button_group_->SelectPanel(ButtonGroup::Panel::START);
+    connect(ui->button_group_, &ButtonGroup::StartGame, this, [=](){
+        StartDispatchCard();
+    });
 }
 
 void GamePanel::paintEvent(QPaintEvent *e)

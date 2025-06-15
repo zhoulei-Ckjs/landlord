@@ -67,6 +67,11 @@ public:
      */
     void InitPlayerContext();
 
+    /**
+     * @brief InitButtonsGroup 初始化游戏按钮组
+     */
+    void InitButtonsGroup();
+
 protected:
     /**
      * @brief 游戏主窗口绘图事件

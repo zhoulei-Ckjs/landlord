@@ -25,6 +25,9 @@ void ButtonGroup::InitButtons()
     btns << ui->start_ << ui->play_card_;
     for(auto& it : btns)
         it->setFixedSize(90, 45);
+
+    /// clicked 需要 mousePressEvent 和 mouseReleaseEvent 一起调用。
+    connect(ui->start_, &MyButton::clicked, this, &ButtonGroup::StartGame);
 }
 
 void ButtonGroup::SelectPanel(Panel type)

@@ -35,6 +35,12 @@ public:
      */
     void SelectPanel(Panel type);
 
+signals:
+    /**
+     * @brief StartGame 开始游戏
+     */
+    void StartGame();
+
 private:
     Ui::ButtonGroup *ui;
 };

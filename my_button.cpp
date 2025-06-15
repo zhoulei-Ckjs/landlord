@@ -27,6 +27,7 @@ void MyButton::mousePressEvent(QMouseEvent *event)
         /// 重绘按钮
         update();
     }
+    QPushButton::mousePressEvent(event);
 }
 
 void MyButton::mouseReleaseEvent(QMouseEvent *event)
@@ -38,6 +39,7 @@ void MyButton::mouseReleaseEvent(QMouseEvent *event)
         /// 重绘按钮
         update();
     }
+    QPushButton::mouseReleaseEvent(event);
 }
 
 void MyButton::enterEvent(QEnterEvent *event)
