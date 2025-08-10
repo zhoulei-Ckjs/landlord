@@ -72,6 +72,13 @@ public:
      */
     void InitButtonsGroup();
 
+    /**
+     * @brief DisposeCard 发牌给玩家
+     * @param player 玩家
+     * @param cards 卡牌
+     */
+    void DisposeCard(Player* player, const Cards& cards);
+
 protected:
     /**
      * @brief 游戏主窗口绘图事件

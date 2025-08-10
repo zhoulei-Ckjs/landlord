@@ -8,6 +8,8 @@
 #include "Player.h"
 #include "robot.h"
 #include "user_player.h"
+#include "card.h"
+#include "cards.h"
 
 #include <QObject>
 
@@ -21,6 +23,11 @@ public:
      * @brief PlayerInit 初始化玩家
      */
     void PlayerInit();
+
+    /**
+     * @brief InitAllCards 初始化扑克牌
+     */
+    void InitAllCards();
 
     /**
      * @brief SetCurrentPlayer 设置当前玩家
@@ -42,6 +49,12 @@ public:
     Player* GetRightRobot();
     Player* GetUserPlayer();
 
+    /**
+     * @brief TakeOneCard 获取一张卡牌
+     * @return 获取到的卡牌
+     */
+    Card TakeOneCard();
+
 signals:
 
 private:
@@ -49,6 +62,7 @@ private:
     Robot* robot_right_ = nullptr;      ///< 右侧机器人
     UserPlayer* user_ = nullptr;        ///< 玩家
     Player* curr_player_ = nullptr;     ///< 当前玩家
+    Cards all_cards_;                   ///< 所有扑克牌
 };
 
 #endif // GAME_CONTROL_H

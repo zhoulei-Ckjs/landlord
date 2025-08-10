@@ -5,6 +5,9 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include "card.h"
+#include "cards.h"
+
 #include <QObject>
 
 class Player : public QObject
@@ -25,10 +28,17 @@ public:
      */
     Player* GetNextPlayer();
 
+    /**
+     * @brief StoreDispatchCard 存储扑克牌
+     * @param card 扑克牌
+     */
+    void StoreDispatchCard(const Card& card);
+
 signals:
 
 protected :
     Player* next_ = nullptr;    ///< 当前玩家的下家
+    Cards cards_;               ///< 存储多张扑克牌
 };
 
 #endif // PLAYER_H

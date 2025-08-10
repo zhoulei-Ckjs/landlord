@@ -1,5 +1,6 @@
 #include "game_panel.h"
 #include "./ui_game_panel.h"
+#include "card.h"
 
 #include <QPainter>
 #include <QRandomGenerator>
@@ -115,14 +116,22 @@ void GamePanel::StartDispatchCard()
 {
     /// 启动发牌定时器
     timer_->start(100);
+
+    /// 重置所有玩家的卡牌数据
+    game_ctl_->InitAllCards();
 }
 
 void GamePanel::OnDispatchCard()
 {
     static int cur_move_pos = 0;
+
+    /// 当前玩家
     Player* cur_player = game_ctl_->GetCurrentPlayer();
     if(cur_move_pos >= 100)
     {
+        /// 给玩家发一张牌
+        Card card = game_ctl_->TakeOneCard();
+        cur_player->StoreDispatchCard(card);
         /// 切换玩家
         game_ctl_->SetCurrentPlayer(cur_player->GetNextPlayer());
         cur_move_pos = 0;
@@ -179,6 +188,11 @@ void GamePanel::InitButtonsGroup()
     connect(ui->button_group_, &ButtonGroup::StartGame, this, [=](){
         StartDispatchCard();
     });
+}
+
+void GamePanel::DisposeCard(Player *player, const Cards &cards)
+{
+
 }
 
 void GamePanel::paintEvent(QPaintEvent *e)
