@@ -9,6 +9,11 @@ void Cards::Add(const Card &card)
     cards_.insert(card);
 }
 
+int Cards::CardsCount()
+{
+    return cards_.size();
+}
+
 void Cards::Clear()
 {
     cards_.clear();

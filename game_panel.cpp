@@ -114,11 +114,11 @@ void GamePanel::InitCardMap()
 
 void GamePanel::StartDispatchCard()
 {
-    /// 启动发牌定时器
-    timer_->start(100);
-
     /// 重置所有玩家的卡牌数据
     game_ctl_->InitAllCards();
+
+    /// 启动发牌定时器
+    timer_->start(10);
 }
 
 void GamePanel::OnDispatchCard()
@@ -135,6 +135,13 @@ void GamePanel::OnDispatchCard()
         /// 切换玩家
         game_ctl_->SetCurrentPlayer(cur_player->GetNextPlayer());
         cur_move_pos = 0;
+
+        /// 判断牌是否发完了
+        if(game_ctl_->GetSurplusCards().CardsCount() == 3)
+        {
+            /// 中止定时器
+            timer_->stop();
+        }
     }
     CardMoveStep(cur_player, cur_move_pos);
     cur_move_pos += 15;

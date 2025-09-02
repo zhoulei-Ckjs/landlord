@@ -21,6 +21,12 @@ public:
     void Add(const Card& card);
 
     /**
+     * @brief CardsCount 获取扑克牌数量
+     * @return 扑克牌数量
+     */
+    int CardsCount();
+
+    /**
      * @brief Clear 清空扑克牌
      */
     void Clear();

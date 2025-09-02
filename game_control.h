@@ -55,6 +55,12 @@ public:
      */
     Card TakeOneCard();
 
+    /**
+     * @brief GetSurplusCards 得到最后三张底牌
+     * @return 卡牌
+     */
+    Cards GetSurplusCards();
+
 signals:
 
 private:

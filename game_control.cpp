@@ -64,3 +64,8 @@ Card GameControl::TakeOneCard()
 {
     return all_cards_.TakeRandomCard();
 }
+
+Cards GameControl::GetSurplusCards()
+{
+    return all_cards_;
+}
