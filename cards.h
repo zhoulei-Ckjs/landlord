@@ -13,6 +13,7 @@ class Cards
 {
 public:
     Cards();
+    explicit Cards(const Card& card);
 
     /**
      * @brief Add 添加扑克牌

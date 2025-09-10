@@ -51,6 +51,12 @@ public:
     void StartDispatchCard();
 
     /**
+     * @brief UpdatePlayerCards update player cards in window
+     * @param player
+     */
+    void UpdatePlayerCards(Player* player);
+
+    /**
      * @brief 发牌时的定时器处理动作
      */
     void OnDispatchCard();

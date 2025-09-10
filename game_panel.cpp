@@ -121,6 +121,15 @@ void GamePanel::StartDispatchCard()
     timer_->start(10);
 }
 
+void GamePanel::UpdatePlayerCards(Player *player)
+{
+    static CardPanel* temp_card = new CardPanel(this);
+    temp_card->SetImage(card_back_image_, card_back_image_);
+    QPoint temp_pos = QPoint(0, 0);
+    temp_card->move(temp_pos);
+    temp_card->show();
+}
+
 void GamePanel::OnDispatchCard()
 {
     static int cur_move_pos = 0;
@@ -132,6 +141,8 @@ void GamePanel::OnDispatchCard()
         /// 给玩家发一张牌
         Card card = game_ctl_->TakeOneCard();
         cur_player->StoreDispatchCard(card);
+        Cards cards(card);
+        DisposeCard(cur_player, cards);
         /// 切换玩家
         game_ctl_->SetCurrentPlayer(cur_player->GetNextPlayer());
         cur_move_pos = 0;
@@ -199,7 +210,7 @@ void GamePanel::InitButtonsGroup()
 
 void GamePanel::DisposeCard(Player *player, const Cards &cards)
 {
-
+    UpdatePlayerCards(player);
 }
 
 void GamePanel::paintEvent(QPaintEvent *e)
