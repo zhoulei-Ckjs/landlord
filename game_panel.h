@@ -92,9 +92,15 @@ protected:
     void paintEvent(QPaintEvent* e);
 
 private:
+    enum CardAlign
+    {
+        HORIZONTAL,                     ///< 水平
+        VERTICAL                        ///< 垂直
+    };
     struct PlayerContext
     {
         QRect card_rect_;               ///< 玩家扑克牌显示区域
+        CardAlign align_;               ///< 扑克牌对其方式
     };
 
     Ui::GamePanel *ui;

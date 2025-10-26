@@ -125,7 +125,17 @@ void GamePanel::UpdatePlayerCards(Player *player)
 {
     static CardPanel* temp_card = new CardPanel(this);
     temp_card->SetImage(card_back_image_, card_back_image_);
-    QPoint temp_pos = QPoint(0, 0);
+    /// 水平 or 垂直显示
+    QPoint temp_pos;
+    if(context_map_[player].align_ == CardAlign::HORIZONTAL)
+    {
+        temp_pos = QPoint(200, 520);
+    }
+    else
+    {
+        temp_pos = QPoint(0, 0);
+    }
+
     temp_card->move(temp_pos);
     temp_card->show();
 }
@@ -191,10 +201,12 @@ void GamePanel::InitPlayerContext()
         QRect(250, rect().bottom() - 120, width() - 500, 100),  ///< 玩家
         QRect(90, 130, 100, height() - 200)                     ///< 左侧机器人
     };
+    int index = player_list_.indexOf(game_ctl_->GetCurrentPlayer());
     for(int i = 0; i < player_list_.size(); i++)
     {
         PlayerContext context;
         context.card_rect_ = cards_rect[i];
+        context.align_= i == index ? CardAlign::HORIZONTAL : CardAlign::VERTICAL;
         context_map_.insert(player_list_.at(i), context);
     }
 }
