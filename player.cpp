@@ -18,3 +18,8 @@ void Player::StoreDispatchCard(const Card &card)
 {
     cards_.Add(card);
 }
+
+Cards Player::GetCards()
+{
+    return cards_;
+}

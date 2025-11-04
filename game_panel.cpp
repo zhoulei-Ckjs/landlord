@@ -123,6 +123,7 @@ void GamePanel::StartDispatchCard()
 
 void GamePanel::UpdatePlayerCards(Player *player)
 {
+    Cards cards = player->GetCards();       ///< 获取玩家所有卡牌
     static CardPanel* temp_card = new CardPanel(this);
     temp_card->SetImage(card_back_image_, card_back_image_);
     /// 水平 or 垂直显示

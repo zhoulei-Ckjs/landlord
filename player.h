@@ -34,6 +34,12 @@ public:
      */
     void StoreDispatchCard(const Card& card);
 
+    /**
+     * @brief GetCards 获取玩家的所有扑克牌
+     * @return 玩家的所有卡牌
+     */
+    Cards GetCards();
+
 signals:
 
 protected :
