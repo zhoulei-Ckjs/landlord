@@ -124,21 +124,27 @@ void GamePanel::StartDispatchCard()
 void GamePanel::UpdatePlayerCards(Player *player)
 {
     Cards cards = player->GetCards();       ///< 获取玩家所有卡牌
-    static CardPanel* temp_card = new CardPanel(this);
-    temp_card->SetImage(card_back_image_, card_back_image_);
-    /// 水平 or 垂直显示
-    QPoint temp_pos;
-    if(context_map_[player].align_ == CardAlign::HORIZONTAL)
-    {
-        temp_pos = QPoint(200, 520);
-    }
-    else
-    {
-        temp_pos = QPoint(0, 0);
-    }
+    static int pos_horizontal = 200;
+    static int pos_vertical = 200;
 
-    temp_card->move(temp_pos);
-    temp_card->show();
+    for(int i = 0; i < cards.CardsCount(); i++)
+    {
+        static CardPanel* temp_card = new CardPanel(this);
+        temp_card->SetImage(card_back_image_, card_back_image_);
+        /// 水平 or 垂直显示
+        QPoint temp_pos;
+        if(context_map_[player].align_ == CardAlign::HORIZONTAL)
+        {
+            temp_pos = QPoint(pos_horizontal++, 520);
+        }
+        else
+        {
+            temp_pos = QPoint(0, pos_vertical++);
+        }
+
+        temp_card->move(temp_pos);
+        temp_card->show();
+    }
 }
 
 void GamePanel::OnDispatchCard()
