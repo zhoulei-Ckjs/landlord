@@ -129,17 +129,19 @@ void GamePanel::UpdatePlayerCards(Player *player)
 
     for(int i = 0; i < cards.CardsCount(); i++)
     {
-        static CardPanel* temp_card = new CardPanel(this);
+        CardPanel* temp_card = new CardPanel(this);
         temp_card->SetImage(card_back_image_, card_back_image_);
         /// 水平 or 垂直显示
         QPoint temp_pos;
         if(context_map_[player].align_ == CardAlign::HORIZONTAL)
         {
-            temp_pos = QPoint(pos_horizontal++, 520);
+            temp_pos = QPoint(pos_horizontal, 520);
+            pos_horizontal += 10;
         }
         else
         {
-            temp_pos = QPoint(0, pos_vertical++);
+            temp_pos = QPoint(0, pos_vertical);
+            pos_vertical += 10;
         }
 
         temp_card->move(temp_pos);
