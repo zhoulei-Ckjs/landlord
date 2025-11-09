@@ -124,8 +124,10 @@ void GamePanel::StartDispatchCard()
 void GamePanel::UpdatePlayerCards(Player *player)
 {
     Cards cards = player->GetCards();       ///< 获取玩家所有卡牌
-    static int pos_horizontal = 200;
-    static int pos_vertical = 200;
+
+    /// 玩家扑克牌展示区
+    int card_space = 20;                    ///< 玩家扑克牌展示间隔
+    QRect cards_rect = context_map_[player].card_rect_;
 
     for(int i = 0; i < cards.CardsCount(); i++)
     {
@@ -133,17 +135,19 @@ void GamePanel::UpdatePlayerCards(Player *player)
         temp_card->SetImage(card_back_image_, card_back_image_);
         /// 水平 or 垂直显示
         QPoint temp_pos;
+
+        int left_x = cards_rect.left();
+        int top_y = cards_rect.top();
         if(context_map_[player].align_ == CardAlign::HORIZONTAL)
         {
-            temp_pos = QPoint(pos_horizontal, 520);
-            pos_horizontal += 10;
+            left_x += cards.CardsCount() * card_space;
         }
         else
         {
-            temp_pos = QPoint(0, pos_vertical);
-            pos_vertical += 10;
+            top_y += cards.CardsCount() * card_space;
         }
 
+        temp_pos = QPoint(left_x, top_y);
         temp_card->move(temp_pos);
         temp_card->show();
     }
