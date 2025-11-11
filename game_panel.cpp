@@ -140,11 +140,17 @@ void GamePanel::UpdatePlayerCards(Player *player)
         int top_y = cards_rect.top();
         if(context_map_[player].align_ == CardAlign::HORIZONTAL)
         {
-            left_x += cards.CardsCount() * card_space;
+            /// 让卡牌在中间开始显示
+            left_x += (cards_rect.width() - (cards.CardsCount() - 1) * card_space - temp_card->width()) / 2;
+            left_x += card_space * i;   ///< 第 i 个卡牌显示位置
+            /// 让卡牌在中间显示
+            top_y += (cards_rect.height() - temp_card->height()) / 2;
         }
         else
         {
-            top_y += cards.CardsCount() * card_space;
+            left_x += (cards_rect.width() - temp_card->width()) / 2;
+            top_y += (cards_rect.height() - (cards.CardsCount() - 1) * card_space - temp_card->height()) / 2;
+            top_y += i * card_space;
         }
 
         temp_pos = QPoint(left_x, top_y);
