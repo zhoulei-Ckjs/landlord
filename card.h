@@ -57,7 +57,11 @@ private:
     CardSuit suit_;     ///< 花色
 };
 
+/// 对象比较
+bool LessSort(const Card& card1, const Card& card2);
+
 bool operator==(const Card& left, const Card& right);
+bool operator<(const Card& card1, const Card& card2);
 
 /**
  * @brief 由于qSet<Card>需要对插入的元素进行去重，利用qHash进行比较，所以需要实现全局函数qHash的重载

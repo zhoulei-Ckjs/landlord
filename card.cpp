@@ -37,3 +37,20 @@ bool operator==(const Card &left, const Card &right)
 {
     return (left.point() == right.point() && left.suit() == right.suit());
 }
+
+bool operator<(const Card &card1, const Card &card2)
+{
+    return LessSort(card1, card2);
+}
+
+bool LessSort(const Card &card1, const Card &card2)
+{
+    if(card1.point() == card2.point())
+    {
+        return card1.suit() < card2.suit();
+    }
+    else
+    {
+        return card1.point() < card2.point();
+    }
+}

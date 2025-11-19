@@ -49,6 +49,14 @@ GamePanel::~GamePanel()
     delete ui;
 }
 
+void GamePanel::CropImage(QPixmap &pix, int x, int y, Card &c)
+{
+    QPixmap sub = pix.copy(x, y, card_size_.width(), card_size_.height());
+    CardPanel* panel = new CardPanel(this);
+    panel->SetImage(sub, card_back_image_);
+    card_map_.insert(c, panel);
+}
+
 void GamePanel::GameControlInit()
 {
     game_ctl_ = new GameControl(this);
@@ -110,6 +118,15 @@ void GamePanel::InitCardMap()
 
     /// 扑克牌背面图
     card_back_image_ = pixmap.copy(2 * card_size_.width(), 4 * card_size_.height(), card_size_.width(), card_size_.height());
+    for(int i = 0, suit = Card::CardSuit::SUIT_BEGIN + 1; suit < Card::CardSuit::SUIT_END; ++suit, ++i)
+    {
+        for(int j = 0, pt = Card::CardPoint::CARD_BEGIN + 1; pt < Card::CardPoint::CARD_SJ; ++pt, ++j)
+        {
+            Card card((Card::CardPoint)pt, (Card::CardSuit)suit);
+            /// 裁剪图片
+            CropImage(pixmap, j * card_size_.width(), i * card_size_.height(), card);
+        }
+    }
 }
 
 void GamePanel::StartDispatchCard()

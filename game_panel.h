@@ -26,6 +26,15 @@ public:
     ~GamePanel();
 
     /**
+     * @brief CropImage 裁剪图片
+     * @param pix 大图的pixmap
+     * @param x 待裁剪的起始 x 位置
+     * @param y 待裁剪的起始 y 位置
+     * @param c 卡牌
+     */
+    void CropImage(QPixmap& pix, int x, int y, Card& c);
+
+    /**
      * @brief GameControlInit 初始化游戏控制类信息
      */
     void GameControlInit();
@@ -107,6 +116,7 @@ private:
 
     QPixmap background_image_;          ///< 游戏主窗口背景图片
     QPixmap card_back_image_;           ///< 扑克牌的背面
+    QMap <Card, CardPanel*> card_map_;  ///< 卡牌与卡牌面板的映射
     QSize card_size_;                   ///< 每张卡牌的大小
     CardPanel* base_card_;              ///< 发牌区中间的扑克牌
     CardPanel* move_card_;              ///< 发牌时移动的牌
