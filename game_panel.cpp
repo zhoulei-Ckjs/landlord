@@ -55,6 +55,7 @@ void GamePanel::CropImage(QPixmap &pix, int x, int y, Card &c)
     CardPanel* panel = new CardPanel(this);
     panel->SetImage(sub, card_back_image_);
     card_map_.insert(c, panel);
+    panel->hide();
 }
 
 void GamePanel::GameControlInit()
@@ -127,6 +128,13 @@ void GamePanel::InitCardMap()
             CropImage(pixmap, j * card_size_.width(), i * card_size_.height(), card);
         }
     }
+
+    /// 小王
+    Card card_small_joker(Card::CardPoint::CARD_SJ, Card::CardSuit::SUIT_BEGIN);
+    CropImage(pixmap, 0, 4 * card_size_.height(), card_small_joker);
+    /// 大王
+    Card card_big_joker(Card::CardPoint::CARD_BJ, Card::CardSuit::SUIT_BEGIN);
+    CropImage(pixmap, card_size_.width(), 4 * card_size_.height(), card_big_joker);
 }
 
 void GamePanel::StartDispatchCard()
