@@ -148,15 +148,16 @@ void GamePanel::StartDispatchCard()
 
 void GamePanel::UpdatePlayerCards(Player *player)
 {
-    Cards cards = player->GetCards();       ///< 获取玩家所有卡牌
+    Cards cards = player->GetCards();           ///< 获取玩家所有卡牌
+    QVector<Card> list = cards.ToCardList();
 
     /// 玩家扑克牌展示区
-    int card_space = 20;                    ///< 玩家扑克牌展示间隔
+    int card_space = 20;                        ///< 玩家扑克牌展示间隔
     QRect cards_rect = context_map_[player].card_rect_;
 
-    for(int i = 0; i < cards.CardsCount(); i++)
+    for(int i = 0; i < list.size(); i++)
     {
-        CardPanel* temp_card = new CardPanel(this);
+        CardPanel* temp_card = card_map_[list.at(i)];
         temp_card->SetImage(card_back_image_, card_back_image_);
         /// 水平 or 垂直显示
         QPoint temp_pos;
@@ -166,15 +167,15 @@ void GamePanel::UpdatePlayerCards(Player *player)
         if(context_map_[player].align_ == CardAlign::HORIZONTAL)
         {
             /// 让卡牌在中间开始显示
-            left_x += (cards_rect.width() - (cards.CardsCount() - 1) * card_space - temp_card->width()) / 2;
-            left_x += card_space * i;   ///< 第 i 个卡牌显示位置
+            left_x += (cards_rect.width() - (list.size() - 1) * card_space - temp_card->width()) / 2;
+            left_x += card_space * i;           ///< 第 i 个卡牌显示位置
             /// 让卡牌在中间显示
             top_y += (cards_rect.height() - temp_card->height()) / 2;
         }
         else
         {
             left_x += (cards_rect.width() - temp_card->width()) / 2;
-            top_y += (cards_rect.height() - (cards.CardsCount() - 1) * card_space - temp_card->height()) / 2;
+            top_y += (cards_rect.height() - (list.size() - 1) * card_space - temp_card->height()) / 2;
             top_y += i * card_space;
         }
 

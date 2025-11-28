@@ -36,3 +36,13 @@ Card Cards::TakeRandomCard()
     cards_.erase(it);
     return card;
 }
+
+QVector<Card> Cards::ToCardList()
+{
+    QVector<Card> list;
+    for(auto it = cards_.begin(); it != cards_.end(); ++it)
+    {
+        list << *it;
+    }
+    return list;
+}

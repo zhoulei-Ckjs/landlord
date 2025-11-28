@@ -8,6 +8,7 @@
 #include "card.h"
 
 #include <QSet>
+#include <QVector>
 
 class Cards
 {
@@ -37,6 +38,12 @@ public:
      * @return 扑克牌
      */
     Card TakeRandomCard();
+
+    /**
+     * @brief ToCardList 获取存储的扑克牌
+     * @return 存储的扑克牌
+     */
+    QVector<Card> ToCardList();
 
 private:
     QSet<Card> cards_;          ///< 存储的扑克牌
