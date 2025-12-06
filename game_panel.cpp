@@ -182,6 +182,7 @@ void GamePanel::UpdatePlayerCards(Player *player)
         temp_pos = QPoint(left_x, top_y);
         temp_card->move(temp_pos);
         temp_card->show();
+        temp_card->raise();
     }
 }
 
