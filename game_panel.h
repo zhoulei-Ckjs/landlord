@@ -109,7 +109,8 @@ private:
     struct PlayerContext
     {
         QRect card_rect_;               ///< 玩家扑克牌显示区域
-        CardAlign align_;               ///< 扑克牌对其方式
+        CardAlign align_;               ///< 扑克牌对齐方式
+        bool is_front_;                 ///< 扑克牌显示正面还是背面
     };
 
     Ui::GamePanel *ui;

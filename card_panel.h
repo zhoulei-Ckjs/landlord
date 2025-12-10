@@ -14,6 +14,11 @@ public:
     explicit CardPanel(QWidget *parent = nullptr);
 
     /**
+     * @brief SetFrontSide 设置卡牌朝上面
+     */
+    void SetFrontSide(bool flag);
+
+    /**
      * @brief 设置卡牌图片
      */
     void SetImage(const QPixmap& front, const QPixmap& back);

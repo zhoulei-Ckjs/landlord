@@ -6,6 +6,11 @@ CardPanel::CardPanel(QWidget *parent)
     : QWidget{parent}
 {}
 
+void CardPanel::SetFrontSide(bool flag)
+{
+    is_front_ = flag;
+}
+
 void CardPanel::SetImage(const QPixmap &front, const QPixmap &back)
 {
     front_ = front;

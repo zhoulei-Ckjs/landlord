@@ -158,7 +158,7 @@ void GamePanel::UpdatePlayerCards(Player *player)
     for(int i = 0; i < list.size(); i++)
     {
         CardPanel* temp_card = card_map_[list.at(i)];
-        temp_card->SetImage(card_back_image_, card_back_image_);
+        temp_card->SetFrontSide(context_map_[player].is_front_);
         /// 水平 or 垂直显示
         QPoint temp_pos;
 
@@ -253,6 +253,7 @@ void GamePanel::InitPlayerContext()
         PlayerContext context;
         context.card_rect_ = cards_rect[i];
         context.align_= i == index ? CardAlign::HORIZONTAL : CardAlign::VERTICAL;
+        context.is_front_ = i == index ? true : false;
         context_map_.insert(player_list_.at(i), context);
     }
 }
