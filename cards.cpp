@@ -37,12 +37,20 @@ Card Cards::TakeRandomCard()
     return card;
 }
 
-QVector<Card> Cards::ToCardList()
+QVector<Card> Cards::ToCardList(SortType type)
 {
     QVector<Card> list;
     for(auto it = cards_.begin(); it != cards_.end(); ++it)
     {
         list << *it;
+    }
+    if(type == SortType::AES)
+    {
+        std::sort(list.begin(), list.end(), LessSort);
+    }
+    else
+    {
+        std::sort(list.begin(), list.end(), GreaterSort);
     }
     return list;
 }

@@ -59,6 +59,7 @@ private:
 
 /// 对象比较
 bool LessSort(const Card& card1, const Card& card2);
+bool GreaterSort(const Card& card1, const Card& card2);
 
 bool operator==(const Card& left, const Card& right);
 bool operator<(const Card& card1, const Card& card2);

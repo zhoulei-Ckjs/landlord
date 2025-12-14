@@ -13,6 +13,12 @@
 class Cards
 {
 public:
+    enum SortType
+    {
+        AES,
+        DESC,
+        NOSORT
+    };
     Cards();
     explicit Cards(const Card& card);
 
@@ -43,7 +49,7 @@ public:
      * @brief ToCardList 获取存储的扑克牌
      * @return 存储的扑克牌
      */
-    QVector<Card> ToCardList();
+    QVector<Card> ToCardList(SortType type = SortType::DESC);
 
 private:
     QSet<Card> cards_;          ///< 存储的扑克牌
