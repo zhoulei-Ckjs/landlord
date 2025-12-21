@@ -40,6 +40,12 @@ public:
     void GameControlInit();
 
     /**
+     * @brief GameStatusProcess 处理游戏状态
+     * @param status 游戏状态
+     */
+    void GameStatusProcess(GameControl::GameStatus status);
+
+    /**
      * @brief 初始化游戏场景
      */
     void InitGameScene();

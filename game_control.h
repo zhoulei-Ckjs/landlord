@@ -17,6 +17,12 @@ class GameControl : public QObject
 {
     Q_OBJECT
 public:
+    enum GameStatus
+    {
+        DISPATCH_CARD,
+        CALLING_LORD
+    };
+
     explicit GameControl(QObject *parent = nullptr);
 
     /**

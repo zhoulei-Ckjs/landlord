@@ -71,6 +71,11 @@ void GamePanel::GameControlInit()
     player_list_ << right_robot << user << left_robot;
 }
 
+void GamePanel::GameStatusProcess(GameControl::GameStatus status)
+{
+    StartDispatchCard();
+}
+
 void GamePanel::InitGameScene()
 {
     /// 发牌区不动的扑克牌
@@ -263,7 +268,7 @@ void GamePanel::InitButtonsGroup()
     ui->button_group_->InitButtons();
     ui->button_group_->SelectPanel(ButtonGroup::Panel::START);
     connect(ui->button_group_, &ButtonGroup::StartGame, this, [=](){
-        StartDispatchCard();
+        GameStatusProcess(GameControl::GameStatus::DISPATCH_CARD);
     });
 }
 
