@@ -40,6 +40,11 @@ void GameControl::SetCurrentPlayer(Player *player)
     curr_player_ = player;
 }
 
+void GameControl::StartLordCard()
+{
+
+}
+
 Player *GameControl::GetCurrentPlayer()
 {
     return curr_player_;

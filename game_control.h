@@ -26,20 +26,25 @@ public:
     explicit GameControl(QObject *parent = nullptr);
 
     /**
-     * @brief PlayerInit 初始化玩家
-     */
-    void PlayerInit();
-
-    /**
      * @brief InitAllCards 初始化扑克牌
      */
     void InitAllCards();
+
+    /**
+     * @brief PlayerInit 初始化玩家
+     */
+    void PlayerInit();
 
     /**
      * @brief SetCurrentPlayer 设置当前玩家
      * @param player 当前玩家
      */
     void SetCurrentPlayer(Player* player);
+
+    /**
+     * @brief StartLordCard 准备叫地主
+     */
+    void StartLordCard();
 
     /**
      * @brief GetCurrentPlayer 获取当前玩家对象

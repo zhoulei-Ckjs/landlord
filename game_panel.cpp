@@ -73,7 +73,25 @@ void GamePanel::GameControlInit()
 
 void GamePanel::GameStatusProcess(GameControl::GameStatus status)
 {
-    StartDispatchCard();
+    switch(status)
+    {
+        case GameControl::GameStatus::DISPATCH_CARD:
+        {
+            StartDispatchCard();
+            break;
+        }
+        case GameControl::GameStatus::CALLING_LORD:
+        {
+            for(int i = 0; i < last_3_cards_.size(); i++)
+            {
+                last_3_cards_[i]->hide();
+            }
+            break;
+            game_ctl_->StartLordCard();
+        }
+        default:
+            break;
+    }
 }
 
 void GamePanel::InitGameScene()
@@ -211,8 +229,10 @@ void GamePanel::OnDispatchCard()
         /// 判断牌是否发完了
         if(game_ctl_->GetSurplusCards().CardsCount() == 3)
         {
-            /// 中止定时器
+            /// 终止定时器
             timer_->stop();
+            /// 切换游戏状态
+            GameStatusProcess(GameControl::GameStatus::CALLING_LORD);
         }
     }
     CardMoveStep(cur_player, cur_move_pos);
