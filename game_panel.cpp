@@ -69,6 +69,8 @@ void GamePanel::GameControlInit()
 
     /// 存储的顺序: 右侧机器人, 当前玩家, 左侧机器人
     player_list_ << right_robot << user << left_robot;
+
+    connect(game_ctl_, &GameControl::PlayerStatusChanged, this, &GamePanel::OnPlayerStatusChanged);
 }
 
 void GamePanel::GameStatusProcess(GameControl::GameStatus status)
@@ -86,8 +88,8 @@ void GamePanel::GameStatusProcess(GameControl::GameStatus status)
             {
                 last_3_cards_[i]->hide();
             }
-            break;
             game_ctl_->StartLordCard();
+            break;
         }
         default:
             break;
@@ -123,6 +125,23 @@ void GamePanel::InitGameScene()
     for(int i = 0; i < 3; i++)
     {
         last_3_cards_[i]->move(base + (card_size_.width() + 10) * i, 20);
+    }
+}
+
+void GamePanel::OnPlayerStatusChanged(Player *player, GameControl::PlayerStatus status)
+{
+    switch(status)
+    {
+        case GameControl::PlayerStatus::THINKING_FOR_CALL_LORD:
+        {
+            if(player == game_ctl_->GetUserPlayer())
+            {
+                ui->button_group_->SelectPanel(ButtonGroup::Panel::PLAY_CARD);
+            }
+            break;
+        }
+        default :
+            break;
     }
 }
 

@@ -23,6 +23,11 @@ public:
         CALLING_LORD
     };
 
+    enum PlayerStatus
+    {
+        THINKING_FOR_CALL_LORD
+    };
+
     explicit GameControl(QObject *parent = nullptr);
 
     /**
@@ -73,6 +78,7 @@ public:
     Cards GetSurplusCards();
 
 signals:
+    void PlayerStatusChanged(Player* player, PlayerStatus status);      ///< 玩家状态变化
 
 private:
     Robot* robot_left_ = nullptr;       ///< 左侧机器人

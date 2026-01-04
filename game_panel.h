@@ -46,19 +46,24 @@ public:
     void GameStatusProcess(GameControl::GameStatus status);
 
     /**
+     * @brief 切割并存储图片
+     */
+    void InitCardMap();
+
+    /**
      * @brief 初始化游戏场景
      */
     void InitGameScene();
 
     /**
+     * @brief OnPlayerStatusChanged 处理玩家状态变化
+     */
+    void OnPlayerStatusChanged(Player* player, GameControl::PlayerStatus status);
+
+    /**
      * @brief 更新玩家得分
      */
     void UpdatePlayerScore();
-
-    /**
-     * @brief 切割并存储图片
-     */
-    void InitCardMap();
 
     /**
      * @brief StartDispatchCard 发牌

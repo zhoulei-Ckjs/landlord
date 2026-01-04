@@ -42,7 +42,7 @@ void GameControl::SetCurrentPlayer(Player *player)
 
 void GameControl::StartLordCard()
 {
-
+    emit PlayerStatusChanged(curr_player_, PlayerStatus::THINKING_FOR_CALL_LORD);
 }
 
 Player *GameControl::GetCurrentPlayer()
