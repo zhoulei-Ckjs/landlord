@@ -136,7 +136,7 @@ void GamePanel::OnPlayerStatusChanged(Player *player, GameControl::PlayerStatus 
         {
             if(player == game_ctl_->GetUserPlayer())
             {
-                ui->button_group_->SelectPanel(ButtonGroup::Panel::PLAY_CARD);
+                ui->button_group_->SelectPanel(ButtonGroup::Panel::CALL_LORD);
             }
             break;
         }

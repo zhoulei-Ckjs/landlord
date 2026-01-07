@@ -19,7 +19,8 @@ public:
     enum Panel
     {
         START,
-        PLAY_CARD
+        PLAY_CARD,
+        CALL_LORD
     };
 
     explicit ButtonGroup(QWidget *parent = nullptr);
