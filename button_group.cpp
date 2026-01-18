@@ -20,11 +20,14 @@ void ButtonGroup::InitButtons()
     /// 设置出牌按钮图片
     ui->play_card_->SetImage(":/res/img/button_group/play_card/normal.png", ":/res/img/button_group/play_card/hover.png", ":/res/img/button_group/play_card/pressed.png");
 
-    ui->give_up_->SetImage(":/res/img/button_group/call_lord/normal.png", ":/res/img/button_group/call_lord/hover.png", ":/res/img/button_group/call_lord/pressed.png");
+    ui->give_up_->SetImage(":/res/img/button_group/call_lord/give_up/normal.png", ":/res/img/button_group/call_lord/give_up/hover.png", ":/res/img/button_group/call_lord/give_up/pressed.png");
+    ui->one_score_->SetImage(":/res/img/button_group/call_lord/one_score/normal.png", ":/res/img/button_group/call_lord/one_score/hover.png", ":/res/img/button_group/call_lord/one_score/pressed.png");
+    ui->two_score_->SetImage(":/res/img/button_group/call_lord/two_score/naomal.png", ":/res/img/button_group/call_lord/two_score/hover.png", ":/res/img/button_group/call_lord/two_score/pressed.png");
+    ui->three_score_->SetImage(":/res/img/button_group/call_lord/three_score/normal.png", ":/res/img/button_group/call_lord/three_score/hover.png", ":/res/img/button_group/call_lord/three_score/pressed.png");
 
     /// 设置按钮大小
     QVector<MyButton*> btns;
-    btns << ui->start_ << ui->play_card_;
+    btns << ui->start_ << ui->play_card_ << ui->give_up_ << ui->one_score_ << ui->two_score_ << ui->three_score_;
     for(auto& it : btns)
         it->setFixedSize(90, 45);
 
