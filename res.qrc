@@ -17,5 +17,8 @@
         <file>res/img/background/background-9.png</file>
         <file>res/img/background/background-10.png</file>
         <file>res/img/card/card.png</file>
+        <file>res/img/button_group/call_lord/hover.png</file>
+        <file>res/img/button_group/call_lord/normal.png</file>
+        <file>res/img/button_group/call_lord/pressed.png</file>
     </qresource>
 </RCC>

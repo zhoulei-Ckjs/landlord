@@ -20,6 +20,8 @@ void ButtonGroup::InitButtons()
     /// 设置出牌按钮图片
     ui->play_card_->SetImage(":/res/img/button_group/play_card/normal.png", ":/res/img/button_group/play_card/hover.png", ":/res/img/button_group/play_card/pressed.png");
 
+    ui->give_up_->SetImage(":/res/img/button_group/call_lord/normal.png", ":/res/img/button_group/call_lord/hover.png", ":/res/img/button_group/call_lord/pressed.png");
+
     /// 设置按钮大小
     QVector<MyButton*> btns;
     btns << ui->start_ << ui->play_card_;
