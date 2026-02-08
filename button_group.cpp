@@ -33,6 +33,9 @@ void ButtonGroup::InitButtons()
 
     /// clicked 需要 mousePressEvent 和 mouseReleaseEvent 一起调用。
     connect(ui->start_, &MyButton::clicked, this, &ButtonGroup::StartGame);
+    connect(ui->give_up_, &MyButton::clicked, this, [=]{
+        emit BetPoint(0);
+    });
 }
 
 void ButtonGroup::SelectPanel(Panel type)

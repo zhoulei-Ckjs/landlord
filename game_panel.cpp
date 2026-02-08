@@ -309,6 +309,9 @@ void GamePanel::InitButtonsGroup()
     connect(ui->button_group_, &ButtonGroup::StartGame, this, [=](){
         GameStatusProcess(GameControl::GameStatus::DISPATCH_CARD);
     });
+    connect(ui->button_group_, &ButtonGroup::BetPoint, this, [=](int bet){
+        ui->button_group_->SelectPanel(ButtonGroup::Panel::EMPTY);
+    });
 }
 
 void GamePanel::DisposeCard(Player *player, const Cards &cards)

@@ -20,7 +20,8 @@ public:
     {
         START,
         PLAY_CARD,
-        CALL_LORD
+        CALL_LORD,
+        EMPTY
     };
 
     explicit ButtonGroup(QWidget *parent = nullptr);
@@ -37,6 +38,12 @@ public:
     void SelectPanel(Panel type);
 
 signals:
+    /**
+     * @brief BetPoint 抢地主
+     * @param bet 下注
+     */
+    void BetPoint(int bet);
+
     /**
      * @brief StartGame 开始游戏
      */
