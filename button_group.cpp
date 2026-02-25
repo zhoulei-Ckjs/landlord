@@ -36,6 +36,15 @@ void ButtonGroup::InitButtons()
     connect(ui->give_up_, &MyButton::clicked, this, [=]{
         emit BetPoint(0);
     });
+    connect(ui->one_score_, &MyButton::clicked, this, [=]{
+        emit BetPoint(1);
+    });
+    connect(ui->two_score_, &MyButton::clicked, this, [=]{
+        emit BetPoint(2);
+    });
+    connect(ui->three_score_, &MyButton::clicked, this, [=]{
+        emit BetPoint(3);
+    });
 }
 
 void ButtonGroup::SelectPanel(Panel type)
