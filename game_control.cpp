@@ -1,5 +1,7 @@
 #include "game_control.h"
 
+#include <QDebug>
+
 GameControl::GameControl(QObject *parent)
     : QObject{parent}
 {}
@@ -18,6 +20,9 @@ void GameControl::PlayerInit()
 
     /// 指定当前玩家
     curr_player_ = user_;
+
+    /// 处理玩家发出的信号
+    connect(user_, &UserPlayer::NotifyGrabLordBet, this, &GameControl::OnGrabBet);
 }
 
 void GameControl::InitAllCards()
@@ -33,6 +38,11 @@ void GameControl::InitAllCards()
     }
     all_cards_.Add(Card(Card::CardPoint::CARD_SJ, Card::CardSuit::SUIT_BEGIN));
     all_cards_.Add(Card(Card::CardPoint::CARD_BJ, Card::CardSuit::SUIT_BEGIN));
+}
+
+void GameControl::OnGrabBet(Player *player, int bet)
+{
+    qDebug() << ", 下注分数: " << bet;
 }
 
 void GameControl::SetCurrentPlayer(Player *player)

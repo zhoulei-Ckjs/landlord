@@ -29,6 +29,12 @@ public:
     Player* GetNextPlayer();
 
     /**
+     * @brief GrabLordBet 叫地主，抢地主。
+     * @param point 分数。
+     */
+    void GrabLordBet(int point);
+
+    /**
      * @brief StoreDispatchCard 存储扑克牌
      * @param card 扑克牌
      */
@@ -41,6 +47,12 @@ public:
     Cards GetCards();
 
 signals:
+    /**
+     * @brief NotifyGrabLordBet 通知已经叫地主下注
+     * @param player
+     * @param bet
+     */
+    void NotifyGrabLordBet(Player* player, int bet);
 
 protected :
     Player* next_ = nullptr;    ///< 当前玩家的下家

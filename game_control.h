@@ -36,6 +36,13 @@ public:
     void InitAllCards();
 
     /**
+     * @brief OnGrabBet 处理叫地主
+     * @param player 玩家
+     * @param bet 分数
+     */
+    void OnGrabBet(Player* player, int bet);
+
+    /**
      * @brief PlayerInit 初始化玩家
      */
     void PlayerInit();
@@ -78,7 +85,12 @@ public:
     Cards GetSurplusCards();
 
 signals:
-    void PlayerStatusChanged(Player* player, PlayerStatus status);      ///< 玩家状态变化
+    /**
+     * @brief PlayerStatusChanged 玩家状态变化
+     * @param player 玩家
+     * @param status 状态
+     */
+    void PlayerStatusChanged(Player* player, PlayerStatus status);
 
 private:
     Robot* robot_left_ = nullptr;       ///< 左侧机器人

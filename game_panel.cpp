@@ -310,6 +310,7 @@ void GamePanel::InitButtonsGroup()
         GameStatusProcess(GameControl::GameStatus::DISPATCH_CARD);
     });
     connect(ui->button_group_, &ButtonGroup::BetPoint, this, [=](int bet){
+        game_ctl_->GetUserPlayer()->GrabLordBet(bet);
         ui->button_group_->SelectPanel(ButtonGroup::Panel::EMPTY);
     });
 }
