@@ -42,7 +42,7 @@ void GameControl::InitAllCards()
 
 void GameControl::OnGrabBet(Player *player, int bet)
 {
-    qDebug() << ", 下注分数: " << bet;
+    emit NotifyGrabLordBet(player, bet);
 }
 
 void GameControl::SetCurrentPlayer(Player *player)

@@ -56,6 +56,13 @@ public:
     void InitGameScene();
 
     /**
+     * @brief OnGrabLordBet 处理玩家抢地主
+     * @param player 玩家
+     * @param bet 分数
+     */
+    void OnGrabLordBet(Player* player, int bet);
+
+    /**
      * @brief OnPlayerStatusChanged 处理玩家状态变化
      */
     void OnPlayerStatusChanged(Player* player, GameControl::PlayerStatus status);

@@ -71,6 +71,7 @@ void GamePanel::GameControlInit()
     player_list_ << right_robot << user << left_robot;
 
     connect(game_ctl_, &GameControl::PlayerStatusChanged, this, &GamePanel::OnPlayerStatusChanged);
+    connect(game_ctl_, &GameControl::NotifyGrabLordBet, this, &GamePanel::OnGrabLordBet);
 }
 
 void GamePanel::GameStatusProcess(GameControl::GameStatus status)
@@ -126,6 +127,12 @@ void GamePanel::InitGameScene()
     {
         last_3_cards_[i]->move(base + (card_size_.width() + 10) * i, 20);
     }
+}
+
+void GamePanel::OnGrabLordBet(Player *player, int bet)
+{
+    /// 显示抢地主的信息提示
+    qDebug() << "抢地主";
 }
 
 void GamePanel::OnPlayerStatusChanged(Player *player, GameControl::PlayerStatus status)

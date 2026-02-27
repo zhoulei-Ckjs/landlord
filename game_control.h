@@ -85,6 +85,9 @@ public:
     Cards GetSurplusCards();
 
 signals:
+
+    void NotifyGrabLordBet(Player* player, int bet);
+
     /**
      * @brief PlayerStatusChanged 玩家状态变化
      * @param player 玩家
