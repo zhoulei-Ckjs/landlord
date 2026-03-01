@@ -29,5 +29,8 @@
         <file>res/img/button_group/call_lord/three_score/hover.png</file>
         <file>res/img/button_group/call_lord/three_score/normal.png</file>
         <file>res/img/button_group/call_lord/three_score/pressed.png</file>
+        <file>res/img/info/buqinag.png</file>
+        <file>res/img/info/jiaodizhu.png</file>
+        <file>res/img/info/qiangdizhu.png</file>
     </qresource>
 </RCC>

@@ -5,6 +5,7 @@
 #ifndef GAME_PANEL_H
 #define GAME_PANEL_H
 
+#include <QLabel>
 #include <Player.h>
 #include <QMainWindow>
 
@@ -128,6 +129,7 @@ private:
     {
         QRect card_rect_;               ///< 玩家扑克牌显示区域
         CardAlign align_;               ///< 扑克牌对齐方式
+        QLabel* info_;                  ///< 游戏过程中的提示信息，比如：不出
         bool is_front_;                 ///< 扑克牌显示正面还是背面
     };
 

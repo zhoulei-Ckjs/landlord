@@ -132,7 +132,9 @@ void GamePanel::InitGameScene()
 void GamePanel::OnGrabLordBet(Player *player, int bet)
 {
     /// 显示抢地主的信息提示
-    qDebug() << "抢地主";
+    PlayerContext context = context_map_[player];
+    context.info_->setPixmap(QPixmap(":/res/img/info/qiangdizhu.png"));
+    context.info_->show();
 }
 
 void GamePanel::OnPlayerStatusChanged(Player *player, GameControl::PlayerStatus status)
@@ -305,6 +307,9 @@ void GamePanel::InitPlayerContext()
         context.card_rect_ = cards_rect[i];
         context.align_= i == index ? CardAlign::HORIZONTAL : CardAlign::VERTICAL;
         context.is_front_ = i == index ? true : false;
+        /// 提示信息
+        context.info_ = new QLabel(this);
+        context.info_->hide();
         context_map_.insert(player_list_.at(i), context);
     }
 }
