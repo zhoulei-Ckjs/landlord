@@ -60,8 +60,9 @@ public:
      * @brief OnGrabLordBet 处理玩家抢地主
      * @param player 玩家
      * @param bet 分数
+     * @param flag 区分是叫地主还是抢地主
      */
-    void OnGrabLordBet(Player* player, int bet);
+    void OnGrabLordBet(Player* player, int bet, bool flag);
 
     /**
      * @brief OnPlayerStatusChanged 处理玩家状态变化

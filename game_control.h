@@ -86,7 +86,7 @@ public:
 
 signals:
 
-    void NotifyGrabLordBet(Player* player, int bet);
+    void GameControlNotifyGrabLordBet(Player* player, int bet, bool flag);
 
     /**
      * @brief PlayerStatusChanged 玩家状态变化

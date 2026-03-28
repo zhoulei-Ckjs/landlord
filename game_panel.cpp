@@ -71,7 +71,7 @@ void GamePanel::GameControlInit()
     player_list_ << right_robot << user << left_robot;
 
     connect(game_ctl_, &GameControl::PlayerStatusChanged, this, &GamePanel::OnPlayerStatusChanged);
-    connect(game_ctl_, &GameControl::NotifyGrabLordBet, this, &GamePanel::OnGrabLordBet);
+    connect(game_ctl_, &GameControl::GameControlNotifyGrabLordBet, this, &GamePanel::OnGrabLordBet);
 }
 
 void GamePanel::GameStatusProcess(GameControl::GameStatus status)
@@ -129,11 +129,25 @@ void GamePanel::InitGameScene()
     }
 }
 
-void GamePanel::OnGrabLordBet(Player *player, int bet)
+void GamePanel::OnGrabLordBet(Player *player, int bet, bool flag)
 {
     /// 显示抢地主的信息提示
     PlayerContext context = context_map_[player];
-    context.info_->setPixmap(QPixmap(":/res/img/info/qiangdizhu.png"));
+    if(bet == 0)
+    {
+        context.info_->setPixmap(QPixmap(":/res/img/info/buqinag.png"));
+    }
+    else
+    {
+        if(flag)
+        {
+            context.info_->setPixmap(QPixmap(":/res/img/info/jiaodizhu.png"));
+        }
+        else
+        {
+            context.info_->setPixmap(QPixmap(":/res/img/info/qiangdizhu.png"));
+        }
+    }
     context.info_->show();
 }
 
