@@ -13,6 +13,19 @@
 
 #include <QObject>
 
+struct BetRecord
+{
+    BetRecord()
+    {
+        Reset();
+    }
+    void Reset()
+    {
+        bet = 0;
+    }
+    int bet;
+};
+
 class GameControl : public QObject
 {
     Q_OBJECT
@@ -96,6 +109,7 @@ signals:
     void PlayerStatusChanged(Player* player, PlayerStatus status);
 
 private:
+    BetRecord bet_record_;
     Robot* robot_left_ = nullptr;       ///< 左侧机器人
     Robot* robot_right_ = nullptr;      ///< 右侧机器人
     UserPlayer* user_ = nullptr;        ///< 玩家

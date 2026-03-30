@@ -42,7 +42,18 @@ void GameControl::InitAllCards()
 
 void GameControl::OnGrabBet(Player *player, int bet)
 {
-    emit GameControlNotifyGrabLordBet(player, bet, true);
+    if(bet == 0 || bet_record_.bet >= bet)
+    {
+        emit GameControlNotifyGrabLordBet(player, 0, false);
+    }
+    else if(bet > 0 && bet_record_.bet == 0)
+    {
+        emit GameControlNotifyGrabLordBet(player, bet, true);
+    }
+    else
+    {
+        emit GameControlNotifyGrabLordBet(player, bet, false);
+    }
 }
 
 void GameControl::SetCurrentPlayer(Player *player)

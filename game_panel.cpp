@@ -323,6 +323,7 @@ void GamePanel::InitPlayerContext()
         context.is_front_ = i == index ? true : false;
         /// 提示信息
         context.info_ = new QLabel(this);
+        context.info_->resize(160, 98);
         context.info_->hide();
         context_map_.insert(player_list_.at(i), context);
     }
