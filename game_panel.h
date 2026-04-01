@@ -128,11 +128,11 @@ private:
     };
     struct PlayerContext
     {
-        CardAlign align_;               ///< 扑克牌对齐方式
-        QRect card_rect_;               ///< 玩家扑克牌显示区域
-        QLabel* info_;                  ///< 游戏过程中的提示信息，比如：不出
-        bool is_front_;                 ///< 扑克牌显示正面还是背面
-        QRect play_hand_rect_;          ///< 出牌的区域
+        CardAlign   align_;             ///< 扑克牌对齐方式
+        QRect       card_rect_;         ///< 玩家扑克牌显示区域
+        QLabel*     info_;              ///< 游戏过程中的提示信息，比如：不出
+        bool        is_front_;          ///< 扑克牌显示正面还是背面
+        QRect       play_hand_rect_;    ///< 出牌的区域
     };
 
     Ui::GamePanel *ui;

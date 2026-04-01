@@ -314,6 +314,12 @@ void GamePanel::InitPlayerContext()
         QRect(250, rect().bottom() - 120, width() - 500, 100),  ///< 玩家
         QRect(90, 130, 100, height() - 200)                     ///< 左侧机器人
     };
+    const QRect play_hand_rect[] =
+    {
+        QRect(rect().right() - 360, 150, 100, 100),             ///< 右侧机器人
+        QRect(150, rect().bottom() - 290, width() - 300, 105),  ///< 玩家
+        QRect(260, 150, 100, 100)                               ///< 左侧机器人
+    };
     int index = player_list_.indexOf(game_ctl_->GetCurrentPlayer());
     for(int i = 0; i < player_list_.size(); i++)
     {
@@ -321,10 +327,15 @@ void GamePanel::InitPlayerContext()
         context.card_rect_ = cards_rect[i];
         context.align_= i == index ? CardAlign::HORIZONTAL : CardAlign::VERTICAL;
         context.is_front_ = i == index ? true : false;
+        context.play_hand_rect_ = play_hand_rect[i];
         /// 提示信息
         context.info_ = new QLabel(this);
         context.info_->resize(160, 98);
         context.info_->hide();
+        QRect rect = play_hand_rect[i];
+        QPoint pt(rect.left() + (rect.width() - context.info_->width()) / 2,
+                  rect.top() + (rect.height() - context.info_->height()) / 2);
+        context.info_->move(pt);
         context_map_.insert(player_list_.at(i), context);
     }
 }
