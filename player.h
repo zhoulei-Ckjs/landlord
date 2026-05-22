@@ -15,12 +15,19 @@ class Player : public QObject
     Q_OBJECT
 public:
     explicit Player(QObject *parent = nullptr);
+    explicit Player(QString name, QObject* parent = nullptr);
 
     /**
      * @brief SetNextPlayer 设置当前玩家的下家
      * @param next 玩家
      */
     void SetNextPlayer(Player* next);
+
+    /**
+     * @brief 玩家名字
+     */
+    void SetName(QString name);
+    QString GetName();
 
     /**
      * @brief GetNextPlayer 获取当前玩家的下家
@@ -55,6 +62,7 @@ signals:
     void NotifyGrabLordBet(Player* player, int bet);
 
 protected :
+    QString name_;              ///< 玩家名字。
     Player* next_ = nullptr;    ///< 当前玩家的下家
     Cards cards_;               ///< 存储多张扑克牌
 };

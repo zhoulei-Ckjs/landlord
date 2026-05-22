@@ -4,9 +4,24 @@ Player::Player(QObject *parent)
     : QObject{parent}
 {}
 
+Player::Player(QString name, QObject *parent)
+{
+    SetName(name);
+}
+
 void Player::SetNextPlayer(Player *next)
 {
     next_ = next;
+}
+
+void Player::SetName(QString name)
+{
+    name_ = name;
+}
+
+QString Player::GetName()
+{
+    return name_;
 }
 
 Player *Player::GetNextPlayer()

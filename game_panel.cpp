@@ -5,6 +5,7 @@
 #include <QPainter>
 #include <QRandomGenerator>
 #include <QTimer>
+#include <QPushButton>
 
 GamePanel::GamePanel(QWidget *parent)
     : QMainWindow(parent)

@@ -12,6 +12,7 @@ class Robot : public Player
 {
     Q_OBJECT
 public:
+    using Player::Player;       ///< 继承基类构造函数
     explicit Robot(QObject *parent = nullptr);
 
 signals:

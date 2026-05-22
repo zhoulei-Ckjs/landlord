@@ -13,6 +13,7 @@ class UserPlayer : public Player
 {
     Q_OBJECT
 public:
+    using Player::Player;           ///< 继承基类构造函数
     explicit UserPlayer(QObject *parent = nullptr);
 
 signals:

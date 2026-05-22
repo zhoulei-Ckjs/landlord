@@ -9,9 +9,9 @@ GameControl::GameControl(QObject *parent)
 void GameControl::PlayerInit()
 {
     /// 对象初始化
-    robot_left_ = new Robot(this);
-    robot_right_ = new Robot(this);
-    user_ = new UserPlayer(this);
+    robot_left_ = new Robot("left robot", this);
+    robot_right_ = new Robot("right robot", this);
+    user_ = new UserPlayer("you", this);
 
     /// 出牌顺序
     user_->SetNextPlayer(robot_left_);
@@ -54,6 +54,8 @@ void GameControl::OnGrabBet(Player *player, int bet)
     {
         emit GameControlNotifyGrabLordBet(player, bet, false);
     }
+
+    qDebug() << "current player name: " << player->GetName() << ", bet point = " << bet;
 }
 
 void GameControl::SetCurrentPlayer(Player *player)

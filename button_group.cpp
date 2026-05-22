@@ -50,4 +50,8 @@ void ButtonGroup::InitButtons()
 void ButtonGroup::SelectPanel(Panel type)
 {
     ui->stacked_widget_->setCurrentIndex(type);
+    if(type != Panel::CALL_LORD)
+    {
+        return;
+    }
 }
