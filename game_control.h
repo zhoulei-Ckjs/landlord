@@ -22,8 +22,12 @@ struct BetRecord
     void Reset()
     {
         bet = 0;
+        player = NULL;
+        time = 0;
     }
     int bet;
+    Player* player;
+    int time;       ///< 叫地主次数
 };
 
 class GameControl : public QObject
@@ -109,7 +113,7 @@ signals:
     void PlayerStatusChanged(Player* player, PlayerStatus status);
 
 private:
-    BetRecord bet_record_;
+    BetRecord bet_record_;              ///< 下注记录
     Robot* robot_left_ = nullptr;       ///< 左侧机器人
     Robot* robot_right_ = nullptr;      ///< 右侧机器人
     UserPlayer* user_ = nullptr;        ///< 玩家

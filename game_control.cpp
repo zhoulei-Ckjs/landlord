@@ -56,6 +56,24 @@ void GameControl::OnGrabBet(Player *player, int bet)
     }
 
     qDebug() << "current player name: " << player->GetName() << ", bet point = " << bet;
+
+    if(bet_record_.bet < bet)
+    {
+        bet_record_.bet = bet;
+        bet_record_.player = player;
+    }
+    bet_record_.time++;
+
+    if(bet_record_.time == 3)
+    {
+        return;
+    }
+
+    /// 切换玩家，通知下一个玩家继续叫地主
+    curr_player_ = player->GetNextPlayer();
+    /// 发送信号给主界面, 告知当前状态为抢地主
+    emit PlayerStatusChanged(curr_player_, THINKING_FOR_CALL_LORD);
+    curr_player_->PrepareCallLord();
 }
 
 void GameControl::SetCurrentPlayer(Player *player)

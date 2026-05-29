@@ -18,6 +18,17 @@ public:
     explicit Player(QString name, QObject* parent = nullptr);
 
     /**
+     * @brief GrabLordBet 叫地主，抢地主。
+     * @param point 分数。
+     */
+    void GrabLordBet(int point);
+
+    /**
+     * @brief 准备叫地主
+     */
+    virtual void PrepareCallLord();
+
+    /**
      * @brief SetNextPlayer 设置当前玩家的下家
      * @param next 玩家
      */
@@ -34,12 +45,6 @@ public:
      * @return 当前玩家的下家
      */
     Player* GetNextPlayer();
-
-    /**
-     * @brief GrabLordBet 叫地主，抢地主。
-     * @param point 分数。
-     */
-    void GrabLordBet(int point);
 
     /**
      * @brief StoreDispatchCard 存储扑克牌

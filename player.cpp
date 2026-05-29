@@ -34,6 +34,11 @@ void Player::GrabLordBet(int point)
     emit NotifyGrabLordBet(this, point);
 }
 
+void Player::PrepareCallLord()
+{
+
+}
+
 void Player::StoreDispatchCard(const Card &card)
 {
     cards_.Add(card);
