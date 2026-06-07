@@ -34,6 +34,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         robot.h robot.cpp
         user_player.h user_player.cpp
         cards.h cards.cpp
+        robot_grap_lord.h robot_grap_lord.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET landlord APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

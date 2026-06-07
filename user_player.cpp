@@ -3,3 +3,8 @@
 UserPlayer::UserPlayer(QObject *parent)
     : Player{parent}
 {}
+
+void UserPlayer::PrepareCallLord()
+{
+
+}
