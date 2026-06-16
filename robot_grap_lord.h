@@ -10,6 +10,9 @@ class RobotGrapLord : public QThread
 public:
     explicit RobotGrapLord(Player* player, QObject *parent = nullptr);
 
+protected:
+    void run();
+
 signals:
 private:
     Player* player_;

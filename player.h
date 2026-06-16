@@ -18,6 +18,12 @@ public:
     explicit Player(QString name, QObject* parent = nullptr);
 
     /**
+     * @brief GetCards 获取玩家的所有扑克牌
+     * @return 玩家的所有卡牌
+     */
+    Cards GetCards();
+
+    /**
      * @brief GrabLordBet 叫地主，抢地主。
      * @param point 分数。
      */
@@ -52,11 +58,7 @@ public:
      */
     void StoreDispatchCard(const Card& card);
 
-    /**
-     * @brief GetCards 获取玩家的所有扑克牌
-     * @return 玩家的所有卡牌
-     */
-    Cards GetCards();
+    virtual void ThinkCallLord();
 
 signals:
     /**

@@ -16,6 +16,7 @@ public:
     explicit Robot(QObject *parent = nullptr);
 
     void PrepareCallLord() override;
+    void ThinkCallLord() override;
 
 signals:
 };

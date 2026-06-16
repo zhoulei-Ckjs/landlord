@@ -44,6 +44,11 @@ void Player::StoreDispatchCard(const Card &card)
     cards_.Add(card);
 }
 
+void Player::ThinkCallLord()
+{
+
+}
+
 Cards Player::GetCards()
 {
     return cards_;

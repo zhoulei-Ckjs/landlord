@@ -16,3 +16,8 @@ void Robot::PrepareCallLord()
     });
     sub_thread->start();
 }
+
+void Robot::ThinkCallLord()
+{
+    GrabLordBet(0);
+}
