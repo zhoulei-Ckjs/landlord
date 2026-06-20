@@ -23,6 +23,7 @@ void GameControl::PlayerInit()
 
     /// 处理玩家发出的信号
     connect(user_, &UserPlayer::NotifyGrabLordBet, this, &GameControl::OnGrabBet);
+    connect(robot_left_, &Player::NotifyGrabLordBet, this, &GameControl::OnGrabBet);
 }
 
 void GameControl::InitAllCards()
