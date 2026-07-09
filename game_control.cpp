@@ -57,7 +57,14 @@ void GameControl::OnGrabBet(Player *player, int bet)
         emit GameControlNotifyGrabLordBet(player, bet, false);
     }
 
-    qDebug() << "current player name: " << player->GetName() << ", bet point = " << bet;
+    qDebug() << "current player name: " << player->GetName() << ", bet point = " << bet << ", bet times = " << bet_record_.time + 1;
+
+    /// 判断玩家下注是不是3分，如果是，则抢地主结束
+    if(bet == 3)
+    {
+        bet_record_.Reset();
+        return;
+    }
 
     if(bet_record_.bet < bet)
     {
