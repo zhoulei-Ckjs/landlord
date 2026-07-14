@@ -36,8 +36,9 @@ class GameControl : public QObject
 public:
     enum GameStatus
     {
-        DISPATCH_CARD,
-        CALLING_LORD
+        DISPATCH_CARD,      ///< 发牌
+        CALLING_LORD,       ///< 叫地主
+        PLAYING_HAND        ///< 出牌
     };
 
     enum PlayerStatus
@@ -46,6 +47,13 @@ public:
     };
 
     explicit GameControl(QObject *parent = nullptr);
+
+    /**
+     * @brief BecomeLord 成为地主
+     * @param player 玩家
+     * @param bet 下注分数
+     */
+    void BecomeLord(Player* player, int bet);
 
     /**
      * @brief InitAllCards 初始化扑克牌
@@ -105,6 +113,9 @@ signals:
 
     void GameControlNotifyGrabLordBet(Player* player, int bet, bool flag);
 
+    /// 游戏状态变化
+    void GameStatusChanged(GameStatus status);
+
     /**
      * @brief PlayerStatusChanged 玩家状态变化
      * @param player 玩家
@@ -113,12 +124,13 @@ signals:
     void PlayerStatusChanged(Player* player, PlayerStatus status);
 
 private:
-    BetRecord bet_record_;              ///< 下注记录
-    Robot* robot_left_ = nullptr;       ///< 左侧机器人
-    Robot* robot_right_ = nullptr;      ///< 右侧机器人
-    UserPlayer* user_ = nullptr;        ///< 玩家
-    Player* curr_player_ = nullptr;     ///< 当前玩家
-    Cards all_cards_;                   ///< 所有扑克牌
+    Cards       all_cards_;                 ///< 所有扑克牌
+    BetRecord   bet_record_;                ///< 下注记录
+    int         curr_bet_;                  ///< 当前下注
+    Robot*      robot_left_ = nullptr;      ///< 左侧机器人
+    Robot*      robot_right_ = nullptr;     ///< 右侧机器人
+    UserPlayer* user_ = nullptr;            ///< 玩家
+    Player*     curr_player_ = nullptr;     ///< 当前玩家
 };
 
 #endif // GAME_CONTROL_H

@@ -6,6 +6,12 @@ GameControl::GameControl(QObject *parent)
     : QObject{parent}
 {}
 
+void GameControl::BecomeLord(Player *player, int bet)
+{
+    curr_bet_ = bet;
+    emit GameStatusChanged(GameStatus::PLAYING_HAND);
+}
+
 void GameControl::PlayerInit()
 {
     /// 对象初始化
@@ -62,6 +68,8 @@ void GameControl::OnGrabBet(Player *player, int bet)
     /// 判断玩家下注是不是3分，如果是，则抢地主结束
     if(bet == 3)
     {
+        /// 玩家成为地主
+        BecomeLord(player, bet);
         bet_record_.Reset();
         return;
     }

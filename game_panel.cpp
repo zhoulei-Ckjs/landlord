@@ -73,6 +73,7 @@ void GamePanel::GameControlInit()
 
     connect(game_ctl_, &GameControl::PlayerStatusChanged, this, &GamePanel::OnPlayerStatusChanged);
     connect(game_ctl_, &GameControl::GameControlNotifyGrabLordBet, this, &GamePanel::OnGrabLordBet);
+    connect(game_ctl_, &GameControl::GameStatusChanged, this, &GamePanel::GameStatusProcess);
 }
 
 void GamePanel::GameStatusProcess(GameControl::GameStatus status)
@@ -91,6 +92,13 @@ void GamePanel::GameStatusProcess(GameControl::GameStatus status)
                 last_3_cards_[i]->hide();
             }
             game_ctl_->StartLordCard();
+            break;
+        }
+        case GameControl::GameStatus::PLAYING_HAND:
+        {
+            /// 隐藏中间的牌
+            base_card_->hide();
+            move_card_->hide();
             break;
         }
         default:
