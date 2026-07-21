@@ -99,6 +99,11 @@ void GamePanel::GameStatusProcess(GameControl::GameStatus status)
             /// 隐藏中间的牌
             base_card_->hide();
             move_card_->hide();
+            /// 显示留给地主的最后 3 张底牌。
+            for(int i = 0; i < last_3_cards_.size(); i++)
+            {
+                last_3_cards_[i]->show();
+            }
             break;
         }
         default:
