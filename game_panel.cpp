@@ -104,6 +104,11 @@ void GamePanel::GameStatusProcess(GameControl::GameStatus status)
             {
                 last_3_cards_[i]->show();
             }
+            for(int i = 0; i < player_list_.size(); i++)
+            {
+                PlayerContext & context = context_map_[player_list_.at(i)];
+                context.info_->hide();      ///< 隐藏各个玩家抢地主时的提示信息。
+            }
             break;
         }
         default:

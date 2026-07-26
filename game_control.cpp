@@ -83,6 +83,15 @@ void GameControl::OnGrabBet(Player *player, int bet)
 
     if(bet_record_.time == 3)
     {
+        if(bet_record_.bet == 0)
+        {
+
+        }
+        else
+        {
+            BecomeLord(bet_record_.player, bet_record_.bet);
+        }
+        bet_record_.Reset();
         return;
     }
 
