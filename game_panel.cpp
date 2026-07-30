@@ -104,10 +104,13 @@ void GamePanel::GameStatusProcess(GameControl::GameStatus status)
             {
                 last_3_cards_[i]->show();
             }
+            /// 隐藏各个玩家抢地主时的提示信息。
             for(int i = 0; i < player_list_.size(); i++)
             {
                 PlayerContext & context = context_map_[player_list_.at(i)];
-                context.info_->hide();      ///< 隐藏各个玩家抢地主时的提示信息。
+                context.info_->hide();
+                context.role_img_->setPixmap(QPixmap(":/res/img/context/role_img/lord_man_2.png"));
+                context.role_img_->show();
             }
             break;
         }
@@ -355,6 +358,10 @@ void GamePanel::InitPlayerContext()
         QPoint pt(rect.left() + (rect.width() - context.info_->width()) / 2,
                   rect.top() + (rect.height() - context.info_->height()) / 2);
         context.info_->move(pt);
+        /// 玩家头像
+        context.role_img_ = new QLabel(this);
+        context.role_img_->resize(84, 120);
+        // context.role_img_->hide();
         context_map_.insert(player_list_.at(i), context);
     }
 }

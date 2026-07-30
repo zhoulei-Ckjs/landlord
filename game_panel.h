@@ -133,6 +133,7 @@ private:
         QLabel*     info_;              ///< 游戏过程中的提示信息，比如：不出
         bool        is_front_;          ///< 扑克牌显示正面还是背面
         QRect       play_hand_rect_;    ///< 出牌的区域
+        QLabel*     role_img_;          ///< 玩家头像
     };
 
     Ui::GamePanel *ui;

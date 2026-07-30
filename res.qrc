@@ -32,5 +32,6 @@
         <file>res/img/info/buqinag.png</file>
         <file>res/img/info/jiaodizhu.png</file>
         <file>res/img/info/qiangdizhu.png</file>
+        <file>res/img/context/role_img/lord_man_2.png</file>
     </qresource>
 </RCC>
