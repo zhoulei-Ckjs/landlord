@@ -342,6 +342,13 @@ void GamePanel::InitPlayerContext()
         QRect(150, rect().bottom() - 290, width() - 300, 105),  ///< 玩家
         QRect(260, 150, 100, 100)                               ///< 左侧机器人
     };
+    const QPoint role_img_pos[] =
+    {
+        QPoint(cards_rect[0].right() + 10, cards_rect[0].height() / 2 + 20),    ///< 右侧机器人
+        QPoint(cards_rect[1].right() - 10, cards_rect[1].top() - 10),           ///< 玩家
+        QPoint(cards_rect[2].left() - 80, cards_rect[2].top() / 2 + 20)         ///< 左侧机器人
+    };
+
     int index = player_list_.indexOf(game_ctl_->GetCurrentPlayer());
     for(int i = 0; i < player_list_.size(); i++)
     {
@@ -361,7 +368,8 @@ void GamePanel::InitPlayerContext()
         /// 玩家头像
         context.role_img_ = new QLabel(this);
         context.role_img_->resize(84, 120);
-        // context.role_img_->hide();
+        context.role_img_->hide();
+        context.role_img_->move(role_img_pos[i]);
         context_map_.insert(player_list_.at(i), context);
     }
 }
