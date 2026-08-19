@@ -104,12 +104,15 @@ void GamePanel::GameStatusProcess(GameControl::GameStatus status)
             {
                 last_3_cards_[i]->show();
             }
-            /// 隐藏各个玩家抢地主时的提示信息。
+
             for(int i = 0; i < player_list_.size(); i++)
             {
-                PlayerContext & context = context_map_[player_list_.at(i)];
-                context.info_->hide();
-                context.role_img_->setPixmap(QPixmap(":/res/img/context/role_img/lord_man_2.png"));
+                Player* player = player_list_.at(i);
+                PlayerContext & context = context_map_[player];
+                context.info_->hide();      ///< 隐藏各个玩家抢地主时的提示信息。
+
+                QPixmap pixmap = LoadRoleImage(Player::Sex::MAN, Player::Direction::RIGHT, Player::Role::FARMER);
+                context.role_img_->setPixmap(pixmap);
                 context.role_img_->show();
             }
             break;
@@ -149,6 +152,49 @@ void GamePanel::InitGameScene()
     {
         last_3_cards_[i]->move(base + (card_size_.width() + 10) * i, 20);
     }
+}
+
+QPixmap GamePanel::LoadRoleImage(Player::Sex sex, Player::Direction direction, Player::Role role)
+{
+    QVector<QString> lord_man;
+    QVector<QString> lord_woman;
+    QVector<QString> farmer_man;
+    QVector<QString> farmer_woman;
+
+    lord_man << ":/res/img/context/role_img/lord_man_1.png" << ":/res/img/context/role_img/lord_man_2.png";
+    lord_woman << ":/res/img/context/role_img/lord_woman_1.png" << ":/res/img/context/role_img/lord_woman_2.png";
+    farmer_man << ":/res/img/context/role_img/farmer_man_1.png" << ":/res/img/context/role_img/farmer_man_2.png";
+    farmer_woman << ":/res/img/context/role_img/farmer_woman_1.png" << ":/res/img/context/role_img/farmer_woman_2.png";
+
+    QImage image;
+    int random = QRandomGenerator::global()->bounded(2);
+    if(sex == Player::Sex::MAN && role == Player::Role::LORD)
+    {
+        image.load(lord_man.at(random));
+    }
+    else if(sex == Player::Sex::MAN && role == Player::Role::FARMER)
+    {
+        image.load(farmer_man.at(random));
+    }
+    else if(sex == Player::Sex::WOMAN && role == Player::Role::LORD)
+    {
+        image.load(lord_woman.at(random));
+    }
+    else if(sex == Player::Sex::WOMAN && role == Player::Role::FARMER)
+    {
+        image.load(farmer_woman.at(random));
+    }
+
+    QPixmap pixmap;
+    if(direction == Player::Direction::LEFT)
+    {
+        pixmap = QPixmap::fromImage(image);
+    }
+    else
+    {
+        pixmap = QPixmap::fromImage(image.mirrored(true, false));
+    }
+    return pixmap;
 }
 
 void GamePanel::OnGrabLordBet(Player *player, int bet, bool flag)
@@ -345,8 +391,8 @@ void GamePanel::InitPlayerContext()
     const QPoint role_img_pos[] =
     {
         QPoint(cards_rect[0].right() + 10, cards_rect[0].height() / 2 + 20),    ///< 右侧机器人
-        QPoint(cards_rect[1].right() - 10, cards_rect[1].top() - 10),           ///< 玩家
-        QPoint(cards_rect[2].left() - 80, cards_rect[2].top() / 2 + 20)         ///< 左侧机器人
+        QPoint(cards_rect[1].right() - 20, cards_rect[1].top() - 10),           ///< 玩家
+        QPoint(cards_rect[2].left() - 80, cards_rect[2].height() / 2 + 20)      ///< 左侧机器人
     };
 
     int index = player_list_.indexOf(game_ctl_->GetCurrentPlayer());

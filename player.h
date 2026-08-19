@@ -14,6 +14,24 @@ class Player : public QObject
 {
     Q_OBJECT
 public:
+    enum Direction
+    {
+        LEFT,
+        RIGHT
+    };
+
+    enum Role
+    {
+        LORD,
+        FARMER
+    };
+
+    enum Sex
+    {
+        MAN,
+        WOMAN
+    };
+
     explicit Player(QObject *parent = nullptr);
     explicit Player(QString name, QObject* parent = nullptr);
 

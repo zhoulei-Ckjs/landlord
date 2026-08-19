@@ -36,6 +36,13 @@ public:
     void CropImage(QPixmap& pix, int x, int y, Card& c);
 
     /**
+     * @brief DisposeCard 发牌给玩家
+     * @param player 玩家
+     * @param cards 卡牌
+     */
+    void DisposeCard(Player* player, const Cards& cards);
+
+    /**
      * @brief GameControlInit 初始化游戏控制类信息
      */
     void GameControlInit();
@@ -55,6 +62,8 @@ public:
      * @brief 初始化游戏场景
      */
     void InitGameScene();
+
+    QPixmap LoadRoleImage(Player::Sex sex, Player::Direction direction, Player::Role role);
 
     /**
      * @brief OnGrabLordBet 处理玩家抢地主
@@ -106,13 +115,6 @@ public:
      * @brief InitButtonsGroup 初始化游戏按钮组
      */
     void InitButtonsGroup();
-
-    /**
-     * @brief DisposeCard 发牌给玩家
-     * @param player 玩家
-     * @param cards 卡牌
-     */
-    void DisposeCard(Player* player, const Cards& cards);
 
 protected:
     /**
