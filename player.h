@@ -52,16 +52,31 @@ public:
      */
     virtual void PrepareCallLord();
 
+    void SetDirection(Direction d);
+
+    /**
+     * @brief 玩家名字
+     */
+    void SetName(QString name);
+
     /**
      * @brief SetNextPlayer 设置当前玩家的下家
      * @param next 玩家
      */
     void SetNextPlayer(Player* next);
 
+    void SetPrevPlayer(Player* prev);
+
+    void SetRole(Role role);
+
     /**
-     * @brief 玩家名字
+     * @brief SetSex 设置玩家性别
+     * @param sex 性别
      */
-    void SetName(QString name);
+    void SetSex(Sex sex);
+
+    Direction GetDirection();
+
     QString GetName();
 
     /**
@@ -69,6 +84,12 @@ public:
      * @return 当前玩家的下家
      */
     Player* GetNextPlayer();
+
+    Player* GetPrevPlayer();
+
+    Role GetRole();
+
+    Sex GetSex();
 
     /**
      * @brief StoreDispatchCard 存储扑克牌
@@ -87,9 +108,13 @@ signals:
     void NotifyGrabLordBet(Player* player, int bet);
 
 protected :
-    QString name_;              ///< 玩家名字。
-    Player* next_ = nullptr;    ///< 当前玩家的下家
     Cards cards_;               ///< 存储多张扑克牌
+    Direction direction_;       ///< 玩家朝向方位
+    QString name_;              ///< 玩家名字
+    Player* next_ = nullptr;    ///< 当前玩家的下家
+    Player* prev_ = nullptr;    ///< 当前玩家的上家。
+    Role role_;                 ///< 玩家角色，地主、农民。
+    Sex sex_;                   ///< 玩家性别
 };
 
 #endif // PLAYER_H

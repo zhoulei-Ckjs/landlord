@@ -1,6 +1,7 @@
 #include "game_control.h"
 
 #include <QDebug>
+#include <QRandomGenerator>
 
 GameControl::GameControl(QObject *parent)
     : QObject{parent}
@@ -9,6 +10,10 @@ GameControl::GameControl(QObject *parent)
 void GameControl::BecomeLord(Player *player, int bet)
 {
     curr_bet_ = bet;
+    player->SetRole(Player::Role::LORD);
+    player->GetNextPlayer()->SetRole(Player::Role::FARMER);
+    player->GetPrevPlayer()->SetRole(Player::Role::FARMER);
+
     emit GameStatusChanged(GameStatus::PLAYING_HAND);
 }
 
@@ -19,10 +24,22 @@ void GameControl::PlayerInit()
     robot_right_ = new Robot("right robot", this);
     user_ = new UserPlayer("you", this);
 
+    /// 性别
+    Player::Sex sex;
+    sex = (Player::Sex)QRandomGenerator::global()->bounded(2);
+    robot_left_->SetSex(sex);
+    sex = (Player::Sex)QRandomGenerator::global()->bounded(2);
+    robot_right_->SetSex(sex);
+    sex = (Player::Sex)QRandomGenerator::global()->bounded(2);
+    user_->SetSex(sex);
+
     /// 出牌顺序
     user_->SetNextPlayer(robot_left_);
+    user_->SetPrevPlayer(robot_right_);
     robot_right_->SetNextPlayer(user_);
+    robot_right_->SetPrevPlayer(robot_left_);
     robot_left_->SetNextPlayer(robot_right_);
+    robot_left_->SetPrevPlayer(user_);
 
     /// 指定当前玩家
     curr_player_ = user_;

@@ -111,7 +111,7 @@ void GamePanel::GameStatusProcess(GameControl::GameStatus status)
                 PlayerContext & context = context_map_[player];
                 context.info_->hide();      ///< 隐藏各个玩家抢地主时的提示信息。
 
-                QPixmap pixmap = LoadRoleImage(Player::Sex::MAN, Player::Direction::RIGHT, Player::Role::FARMER);
+                QPixmap pixmap = LoadRoleImage(player->GetSex(), player->GetDirection(), player->GetRole());
                 context.role_img_->setPixmap(pixmap);
                 context.role_img_->show();
             }
