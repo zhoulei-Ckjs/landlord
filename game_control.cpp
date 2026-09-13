@@ -24,6 +24,10 @@ void GameControl::PlayerInit()
     robot_right_ = new Robot("right robot", this);
     user_ = new UserPlayer("you", this);
 
+    robot_left_->SetDirection(Player::LEFT);
+    robot_right_->SetDirection(Player::RIGHT);
+    robot_right_->SetDirection(Player::RIGHT);
+
     /// 性别
     Player::Sex sex;
     sex = (Player::Sex)QRandomGenerator::global()->bounded(2);
