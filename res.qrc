@@ -40,5 +40,8 @@
         <file>res/img/context/role_img/lord_man_1.png</file>
         <file>res/img/context/role_img/lord_woman_1.png</file>
         <file>res/img/context/role_img/lord_woman_2.png</file>
+        <file>res/img/game_pannel/animination_window/bet_score/score1.png</file>
+        <file>res/img/game_pannel/animination_window/bet_score/score2.png</file>
+        <file>res/img/game_pannel/animination_window/bet_score/score3.png</file>
     </qresource>
 </RCC>

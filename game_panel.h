@@ -11,6 +11,7 @@
 
 #include "card_panel.h"
 #include "game_control.h"
+#include "animation_window.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -25,6 +26,15 @@ class GamePanel : public QMainWindow
 public:
     GamePanel(QWidget *parent = nullptr);
     ~GamePanel();
+
+    enum AniminationType{
+        SHUN_ZI,
+        LIAN_DUI,
+        PLANE,
+        JOKER_BOMB,
+        BOMB,
+        BET
+    };
 
     /**
      * @brief CropImage 裁剪图片
@@ -79,20 +89,27 @@ public:
     void OnPlayerStatusChanged(Player* player, GameControl::PlayerStatus status);
 
     /**
-     * @brief 更新玩家得分
-     */
-    void UpdatePlayerScore();
-
-    /**
      * @brief StartDispatchCard 发牌
      */
     void StartDispatchCard();
+
+    /**
+     * @brief 更新玩家得分
+     */
+    void UpdatePlayerScore();
 
     /**
      * @brief UpdatePlayerCards update player cards in window
      * @param player
      */
     void UpdatePlayerCards(Player* player);
+
+    /**
+     * @brief ShowAnimination 显示特效动画。
+     * @param type 类型。
+     * @param bet 额外参数：下注。
+     */
+    void ShowAnimination(AniminationType type, int bet = 0);
 
     /**
      * @brief 发牌时的定时器处理动作
@@ -152,5 +169,7 @@ private:
     QVector<Player*> player_list_;      ///< 玩家列表
     GameControl* game_ctl_;             ///< 游戏控制类
     QMap<Player*, PlayerContext> context_map_;  ///< 玩家上下文
+    AnimationWindow* animation_window;
+
 };
 #endif // GAME_PANEL_H

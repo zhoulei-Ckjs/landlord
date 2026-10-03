@@ -43,6 +43,8 @@ GamePanel::GamePanel(QWidget *parent)
     /// 定时器实例化
     timer_ = new QTimer(this);
     connect(timer_, &QTimer::timeout, this, &GamePanel::OnDispatchCard);
+
+    animation_window = new AnimationWindow(this);
 }
 
 GamePanel::~GamePanel()
@@ -215,6 +217,7 @@ void GamePanel::OnGrabLordBet(Player *player, int bet, bool flag)
         {
             context.info_->setPixmap(QPixmap(":/res/img/info/qiangdizhu.png"));
         }
+        ShowAnimination(AniminationType::BET, bet);
     }
     context.info_->show();
 }
@@ -316,6 +319,18 @@ void GamePanel::UpdatePlayerCards(Player *player)
         temp_card->move(temp_pos);
         temp_card->show();
         temp_card->raise();
+    }
+}
+
+void GamePanel::ShowAnimination(AniminationType type, int bet)
+{
+    switch(type)
+    {
+    case AniminationType::BET:
+        animation_window->ShowBetScore(bet);
+        break;
+    default:
+        break;
     }
 }
 
