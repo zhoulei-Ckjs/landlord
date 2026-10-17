@@ -327,6 +327,7 @@ void GamePanel::ShowAnimination(AniminationType type, int bet)
     switch(type)
     {
     case AniminationType::BET:
+        animation_window->setFixedSize(160, 98);
         animation_window->ShowBetScore(bet);
         break;
     default:
